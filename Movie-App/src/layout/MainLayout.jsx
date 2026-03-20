@@ -1,0 +1,16 @@
+import Header from "./Header";
+import Footer from "./Footer";
+import {Outlet} from 'react-router-dom'
+const MainLayout = () => {
+  return (
+    <div className = "flex flex-col min-h-screen bg-black text-white">
+      <Header />
+      {/* flex: 1 giúp phần main tự giãn ra để đẩy Footer xuống đáy */}
+      <main className="p-5 flex flex-1">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
+};
+export default MainLayout
