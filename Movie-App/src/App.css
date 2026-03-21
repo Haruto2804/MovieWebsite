@@ -6,3 +6,50 @@
   --background-image-cine-gradient: linear-gradient(90deg, #ff3d68 0%, #a044ff 100%);
   --shadow-cine: 0 4px 15px rgba(160, 68, 255, 0.3);
 }
+/* 1. Container Swiper: Để mặc định, không cần padding ngoài quá nhiều */
+.swiper {
+  padding: 0 10px; 
+}
+
+/* 2. Nút bấm: Màu đen xám, tối giản */
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: rgba(20, 20, 20, 0.7); /* Đen xám mờ */
+  width: 40px;
+  height: 60px; /* Dáng chữ nhật đứng bo góc nhìn sẽ hiện đại hơn */
+  border-radius: 4px;
+  color: #bcbcbc !important; /* Màu xám sáng */
+  transition: all 0.2s ease-in-out;
+  padding:5px;
+}
+
+/* Đẩy nút sát vào 2 mép bên trong */
+.swiper-button-prev {
+  left: 0 !important;
+}
+.swiper-button-next {
+  right: 0 !important;
+}
+
+/* 3. Hiệu ứng khi Hover: Sáng hơn một chút */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: rgba(40, 40, 40, 0.9);
+  color: #ffffff !important;
+  transform: scale(1.05);
+}
+
+/* 4. Làm mũi tên nhỏ và thanh mảnh */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 16px !important;
+  font-weight: normal;
+}
+
+/* 5. Ẩn nút trên Mobile */
+@media (max-width: 640px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+  }
+}
