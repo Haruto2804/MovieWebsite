@@ -8,9 +8,7 @@ const MovieSection = ({ title, movieList }) => {
   const sectionId = title?.replace(/\s+/g, '') || "default";
   return (
     <div
-      section={sectionId}
-      className=" bg-black  
-    ">
+      section={sectionId}>
       {/* Tiêu đề mục phim */}
       <h2 className="text-xl font-bold text-white mb-4">{title}</h2>
       <Swiper

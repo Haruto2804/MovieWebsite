@@ -3,7 +3,7 @@ import { FiUser } from "react-icons/fi";
 import { RiMovie2AiFill } from "react-icons/ri";
 const Header = () => {
   return (
-    <header className="bg-blur flex justify-between items-center px-5 py-3 
+    <header className="bg-blur flex justify-between items-center px-5 py-3 z-1000 
     sticky top-0 border-white/10 bg-black/60 backdrop-blur-md">
       <div className="flex gap-4 items-center">
         <div className="bg-cine-gradient p-2 rounded-lg">
