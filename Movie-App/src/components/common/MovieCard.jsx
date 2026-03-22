@@ -4,7 +4,6 @@ import { FaPlay, FaHeart } from "react-icons/fa";
 import { RiMovie2Fill } from "react-icons/ri";
 
 const MovieCard = ({ movie }) => {
-  console.log(movie)
   return (
     <div className=" overflow-hidden cursor-pointer relative h-80 w-54 rounded-md group">
       {/* ảnh nền */}

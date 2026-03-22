@@ -12,6 +12,13 @@ const Home = () => {
   const genresToShow = useMemo(() => ["Anime", "Fantasy", "Isekai", "Marvel"], [])
   useEffect(() => {
     const fetchAllSection = async () => {
+      const savedData = localStorage.getItem('movie_sections_cache');
+      if(savedData) {
+        setSectionMovie(JSON.parse(savedData));
+        setLoading(false);
+        console.log('Dũ liệu lấy từ Local Storage')
+        return;
+      }
       setLoading(true);
       const apiKey = import.meta.env.VITE_OMDB_API_KEY;
       try {
@@ -26,6 +33,7 @@ const Home = () => {
            dataMap[genresToShow[index]] = response.data.Search || [];
         });
         setSectionMovie(dataMap);
+        localStorage.setItem('movie_sections_cache', JSON.stringify(dataMap));
       }
       catch (err) {
         console.log(err);
