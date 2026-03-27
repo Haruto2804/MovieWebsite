@@ -37,9 +37,14 @@ class MovieApi {
                 localStorage.setItem(cacheKey, JSON.stringify(results));
                 return results;
             }
-        // eslint-disable-next-line no-unused-vars
+            // eslint-disable-next-line no-unused-vars
         } catch (err) { return []; }
     }
-    
+    searchMovies = async (query, year) => {
+        const apiKey = import.meta.env.VITE_OMDB_API_KEY;
+        const url = `https://www.omdbapi.com/?s=${query}&apikey=${apiKey}&y=${year}`;
+        const response = await axios.get(url);
+        return response.data.Search;
+    }
 }
 export default new MovieApi;

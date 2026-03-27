@@ -1,5 +1,4 @@
 
-import { MdOutlineStar } from "react-icons/md";
 import { FaPlay, FaHeart } from "react-icons/fa";
 import { RiMovie2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
