@@ -40,5 +40,6 @@ class MovieApi {
         // eslint-disable-next-line no-unused-vars
         } catch (err) { return []; }
     }
+    
 }
 export default new MovieApi;

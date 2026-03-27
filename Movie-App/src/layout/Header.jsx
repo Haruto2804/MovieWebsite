@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className="bg-blur flex justify-between items-center px-5 py-3 z-1000 
     sticky top-0 border-white/10 bg-black/60 backdrop-blur-md">
-      <Link to = "/" className="flex gap-4 items-center group cursor-pointer">
+      <Link to="/" className="flex gap-4 items-center group cursor-pointer">
         <div className="bg-cine-gradient p-2 rounded-lg group-hover:scale-105 transition-all duration-300">
           <RiMovie2AiFill className="size-6 text-white " />
         </div>
@@ -15,10 +15,8 @@ const Header = () => {
         </p>
       </Link>
       <ul className="text-gray-400 gap-4 md:flex hidden">
-        <li className="cursor-pointer hover:text-gray-300 transition-all duration-300">Home</li>
-        <li className="cursor-pointer hover:text-gray-300 transition-all duration-300">TV Shows</li>
-        <li className="cursor-pointer hover:text-gray-300 transition-all duration-300">Movies</li>
-        <li className="cursor-pointer hover:text-gray-300 transition-all duration-300">Genres</li>
+        <Link to = "/" className="cursor-pointer hover:text-gray-300 transition-all duration-300">Home</Link>
+        <Link to = "/search_discover" className="cursor-pointer hover:text-gray-300 transition-all duration-300">Search & Discover</Link>
 
       </ul>
       <div className="flex gap-3">
