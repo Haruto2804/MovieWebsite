@@ -40,11 +40,11 @@ class MovieApi {
             // eslint-disable-next-line no-unused-vars
         } catch (err) { return []; }
     }
-    searchMovies = async (query, year) => {
+    searchMovies = async (query, year,currentPage) => {
         const apiKey = import.meta.env.VITE_OMDB_API_KEY;
-        const url = `https://www.omdbapi.com/?s=${query}&apikey=${apiKey}&y=${year}`;
+        const url = `https://www.omdbapi.com/?s=${query}&apikey=${apiKey}&y=${year}&page=${currentPage}`;
         const response = await axios.get(url);
-        return response.data.Search;
+        return response.data;
     }
 }
 export default new MovieApi;

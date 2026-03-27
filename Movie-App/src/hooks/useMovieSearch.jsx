@@ -3,10 +3,10 @@ import movieApi from '../api/movie-api';
 
 export const useMovieSearch = (initialQuery = "") => {
   const [query, setQuery] = useState(initialQuery);
-  const [filter, setFilter] = useState({ year: '', genre: '' });
+  const [filter, setFilter] = useState({ year: ''});
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const [currentPage,setCurrentPage] = useState(1);
   // Logic tìm kiếm & lọc
   useEffect(() => {
     const fetchMovies = async () => {
@@ -15,14 +15,8 @@ export const useMovieSearch = (initialQuery = "") => {
       setLoading(true);
       try {
         // Gọi API với query và filter
-        const data = await movieApi.searchMovies(query, filter.year, filter.type);
-        let finalData = data;
-        if (filter.genre && filter.genre !== "All") {
-          finalData = data.filter((movie) =>
-            movie.Genre?.includes(filter.genre)
-          );
-        }
-        setResults(finalData);
+        const data = await movieApi.searchMovies(query, filter.year,currentPage);
+        setResults(data);
       } catch (err) {
         console.error(err);
       } finally {
@@ -34,13 +28,13 @@ export const useMovieSearch = (initialQuery = "") => {
     const timer = setTimeout(fetchMovies, 500);
     return () => clearTimeout(timer);
 
-  }, [query, filter]);
+  }, [query, filter, currentPage]);
 
   // Trả về những thứ UI cần "móc" vào
   return {
     query, setQuery,
     filter, setFilter,
     results, setResults,
-    loading
+    loading,currentPage,setCurrentPage
   };
 };
