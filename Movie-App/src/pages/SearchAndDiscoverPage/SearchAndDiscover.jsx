@@ -12,7 +12,7 @@ const SearchAndDiscover = () => {
     console.log(currentPage)
   return (
 
-    <div className="mt-3 flex flex-col gap-4 text-white mx-auto md:mx-0  w-full">
+    <div className="p-3 mt-3 flex flex-col gap-4 text-white mx-auto md:mx-0  w-full">
       <div className="w-fit">
         <BackButton />
       </div>
