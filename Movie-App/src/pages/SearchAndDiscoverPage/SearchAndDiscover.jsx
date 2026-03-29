@@ -2,14 +2,12 @@
 import BackButton from "../../components/common/BackButton"
 import SearchInput from "../../components/common/SearchInput"
 import FilterSection from "./FilterSection"
-import { useMovieSearch } from "../../hooks/useMovieSearch"
 import MovieCard from '../../components/common/MovieCard'
 import { Loader2 } from "lucide-react"
 import Pagination from "../../components/common/Pagination"
+import { useMovieContext } from "../../contexts/movieContext"
 const SearchAndDiscover = () => {
-
-  const { query, setQuery, setFilter, results, loading,currentPage,setCurrentPage } = useMovieSearch("");
-    console.log(currentPage)
+  const { query, setQuery, setFilter, results, loading, currentPage, setCurrentPage } = useMovieContext();
   return (
 
     <div className="p-3 mt-3 flex flex-col gap-4 text-white mx-auto md:mx-0  w-full">
@@ -19,15 +17,16 @@ const SearchAndDiscover = () => {
 
       <p className="text-5xl font-bold">Search & Discover</p>
       <SearchInput
+        query={query}
         setQuery={setQuery}
         value={query}
         placeholder="Search for Movies" />
       <FilterSection
         setFilter={setFilter}
       />
-      {Number(results.totalResults)  > 0 && (
+      {Number(results.totalResults) > 0 && (
         <p className="text-gray-500 text-sm mb-2">
-          Found <span className="text-white font-bold">{results.length}</span> movies
+          Found <span className="text-white font-bold">{results.totalResults}</span> movies
         </p>
       )}
       <div className=" max-md:mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3
@@ -52,11 +51,11 @@ const SearchAndDiscover = () => {
         )}
       </div>
 
-      <Pagination 
-      loading = {loading}
-      page = {currentPage}
-      setPage = {setCurrentPage}
-      totalResults = {Number(results.totalResults)}
+      <Pagination
+        loading={loading}
+        page={currentPage}
+        setPage={setCurrentPage}
+        totalResults={Number(results.totalResults)}
       />
     </div>
   )

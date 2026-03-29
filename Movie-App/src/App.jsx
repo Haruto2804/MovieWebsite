@@ -5,18 +5,19 @@ import MainLayout from '../src/layout/MainLayout'
 import Home from './pages/HomePage/Home'
 import DetailMovie from './/pages/DetailMoviePage/DetailMovie'
 import SearchAndDiscover from './pages/SearchAndDiscoverPage/SearchAndDiscover'
+import { MovieProvider } from './contexts/movieContext'
 function App() {
   return (
-    <>
+    <MovieProvider>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<Home />} />
-          <Route path="/movie/:id" element={<DetailMovie />}></Route>
-          <Route path="/search_discover" element={<SearchAndDiscover />}></Route>
-        </Route>
-
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route path="/movie/:id" element={<DetailMovie />}></Route>
+            <Route path="/search_discover" element={<SearchAndDiscover />}></Route>
+          </Route>
+          
       </Routes>
-    </>
+    </MovieProvider>
   )
 }
 
