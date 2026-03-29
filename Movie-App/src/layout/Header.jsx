@@ -29,7 +29,7 @@ const Header = () => {
             onClick={() => setIsSidebarOpen(true)}
             className="text-white hover:text-gray-400 transition-colors cursor-pointer"
           >
-            <GiHamburgerMenu className="size-6 md:hiddens" />
+            <GiHamburgerMenu className="size-6 md:hidden" />
           </button>
 
           <Link to="/" className="flex gap-4 items-center">
