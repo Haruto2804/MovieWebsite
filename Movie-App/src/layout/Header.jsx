@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineHome } from "react-icons/ai"; // Icon bổ trợ cho Sidebar
 import { MdOutlineExplore } from "react-icons/md"; // Icon bổ trợ cho Sidebar
+import LoginButton from "../components/common/LoginButton";
 const navigation = [
   {
     value: 'Home', path: '/'
@@ -15,6 +16,7 @@ const navigation = [
   }
 ]
 const Header = () => {
+  const [login, setLogin] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Hàm helper để đóng sidebar khi click vào link
@@ -48,14 +50,19 @@ const Header = () => {
           <Link to="/search_discover" className="hover:text-white transition-all duration-300">Search & Discover</Link>
         </ul>
 
-        <div className="flex gap-3">
-          <div className="rounded-full flex items-center p-2 cursor-pointer hover:bg-slate-800 transition-all duration-300">
-            <GoSearch className="size-5 text-slate-300" />
+
+        {login === false ? (
+          <LoginButton />
+        ) : (
+          <div className="flex gap-3">
+            <div className="rounded-full flex items-center p-2 cursor-pointer hover:bg-slate-800 transition-all duration-300">
+              <GoSearch className="size-5 text-slate-300" />
+            </div>
+            <div className="rounded-full flex items-center p-2 cursor-pointer hover:bg-slate-800 transition-all duration-300">
+              <FiUser className="size-5 text-slate-300" />
+            </div>
           </div>
-          <div className="rounded-full flex items-center p-2 cursor-pointer hover:bg-slate-800 transition-all duration-300">
-            <FiUser className="size-5 text-slate-300" />
-          </div>
-        </div>
+        )}
       </header>
 
       {/* --- SIDEBAR COMPONENT --- */}

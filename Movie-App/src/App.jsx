@@ -6,6 +6,7 @@ import Home from './pages/HomePage/Home'
 import DetailMovie from './/pages/DetailMoviePage/DetailMovie'
 import SearchAndDiscover from './pages/SearchAndDiscoverPage/SearchAndDiscover'
 import { MovieProvider } from './contexts/movieContext'
+import ApprovePage from './pages/ApprovePage'
 function App() {
   return (
     <MovieProvider>
@@ -14,6 +15,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/movie/:id" element={<DetailMovie />}></Route>
             <Route path="/search_discover" element={<SearchAndDiscover />}></Route>
+            <Route path = "/approve" element={<ApprovePage />}></Route>
           </Route>
           
       </Routes>
