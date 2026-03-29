@@ -6,6 +6,14 @@ import { Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineHome } from "react-icons/ai"; // Icon bổ trợ cho Sidebar
 import { MdOutlineExplore } from "react-icons/md"; // Icon bổ trợ cho Sidebar
+const navigation = [
+  {
+    value: 'Home', path: '/'
+  },
+  {
+    value: 'Search & Discover', path: '/search_discover'
+  }
+]
 const Header = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -71,23 +79,19 @@ const Header = () => {
         </div>
 
         <nav className="p-4 flex flex-col gap-2">
-          <Link
-            to="/"
-            onClick={closeSidebar}
-            className="flex items-center gap-4 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-white rounded-xl transition-all"
-          >
-            <AiOutlineHome className="size-5" />
-            <span className="font-medium">Home</span>
-          </Link>
+          {navigation.map((item) => (
+            <Link
+              to={item.path}
+              onClick={closeSidebar}
+              className="flex items-center gap-4 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-white rounded-xl transition-all"
+            >
+              <AiOutlineHome className="size-5" />
+              <span className="font-medium">{item.value}</span>
+            </Link>
+          ))}
 
-          <Link
-            to="/search_discover"
-            onClick={closeSidebar}
-            className="flex items-center gap-4 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-white rounded-xl transition-all"
-          >
-            <MdOutlineExplore className="size-5" />
-            <span className="font-medium">Search & Discover</span>
-          </Link>
+
+
         </nav>
       </aside>
     </>
