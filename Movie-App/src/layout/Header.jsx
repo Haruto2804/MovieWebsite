@@ -60,10 +60,10 @@ const Header = () => {
           />
         ) : (
           <div className="flex gap-3">
-            <div className="rounded-full flex gap-2 items-center p-2 cursor-pointer hover:bg-slate-800 transition-all duration-300">
+            <Link to = "/user" className="rounded-full flex gap-2 items-center p-2 cursor-pointer hover:bg-slate-800 transition-all duration-300">
               <FiUser className="size-5 text-slate-300" />
               {user.username}
-            </div>
+            </Link>
             <LogoutButton 
             logout={()=> handleLogout()}/>
           </div>

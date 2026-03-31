@@ -8,6 +8,7 @@ import SearchAndDiscover from './pages/SearchAndDiscoverPage/SearchAndDiscover'
 import { MovieProvider } from './contexts/movieContext'
 import ApprovePage from './pages/ApprovePage'
 import { AuthContext, AuthProvider } from './contexts/authContext'
+import UserPage from './pages/UserPage'
 function App() {
   return (
     <AuthProvider>
@@ -18,6 +19,7 @@ function App() {
             <Route path="/movie/:id" element={<DetailMovie />}></Route>
             <Route path="/search_discover" element={<SearchAndDiscover />}></Route>
             <Route path="/approve" element={<ApprovePage />}></Route>
+            <Route path ="/user" element= {<UserPage />}></Route>
           </Route>
         </Routes>
       </MovieProvider>

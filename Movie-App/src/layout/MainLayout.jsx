@@ -7,7 +7,7 @@ const MainLayout = () => {
     <div className = "flex flex-col min-h-screen bg-zinc-950 text-white">
       <Header />
       {/* flex: 1 giúp phần main tự giãn ra để đẩy Footer xuống đáy */}
-      <main className="px-2 md:px-4 lg:px-10 flex flex-1">
+      <main className="px-5 md:px-4 lg:px-10 flex flex-1">
         <Outlet />
       </main>
       <Footer />
