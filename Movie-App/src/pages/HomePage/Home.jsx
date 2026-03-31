@@ -4,11 +4,12 @@ import { FaPlay } from "react-icons/fa";
 import { IoInformationCircleOutline } from "react-icons/io5";
 import FavoriteButton from "../../components/common/FavoriteButton";
 import MovieSection from "./MovieSection";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import { MovieContext } from "../../contexts/movieContext";
 import TrailerModal from '../DetailMoviePage/TrailerModal'
 import movieApi from "../../api/movie-api";
+import { useNavigate } from "react-router-dom";
 const formatTitle = (key) => {
   const titles = {
     playing: "Playing",
@@ -22,6 +23,7 @@ const Home = () => {
   const { homeMovies, featuredMovie } = useContext(MovieContext);
   const [isOpen, setIsOpen] = useState(false);
   const [trailerVideos, setTrailerVideos] = useState([]);
+  const navigate = useNavigate();
   const handlePlayButton = async () => {
     if (!featuredMovie?.id) return;
 
@@ -98,12 +100,17 @@ const Home = () => {
                 <span className="text-black text-md font-bold group-hover:text-white">Play Now</span>
               </button>
 
-              <button className="flex gap-3 items-center bg-zinc-600/80 backdrop-blur-md rounded-lg px-8 py-3 
-        cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-500
-        group active:scale-95 text-white">
-                <IoInformationCircleOutline className="size-6" />
-                <span className="text-md font-bold">More Info</span>
-              </button>
+              
+                <button 
+                onClick={()=> navigate(`/movie/${featuredMovie.id}`)}
+                className="flex gap-3 items-center bg-zinc-600/80 backdrop-blur-md rounded-lg px-8 py-3 
+                  cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-500
+                  group active:scale-95 text-white">
+                  <IoInformationCircleOutline className="size-6" />
+                  <span className="text-md font-bold">More Info</span>
+                </button>
+  
+
 
               <FavoriteButton movie={featuredMovie} />
             </div>

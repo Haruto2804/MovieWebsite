@@ -109,10 +109,14 @@ class MovieApi {
     }
     getTrailerVideos = async (movieId) => {
         const videos = await this.getMoreVideos(movieId);
-        const trailerVideos = videos.filter((item)=>item.type ==='Trailer');
+        const trailerVideos = videos.filter((item) => item.type === 'Trailer');
         return trailerVideos;
     }
-
-
+    getMoviesBySearch = async (keyword,year,page) => {
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+        const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${keyword}&page=${page}&primary_release_year=${year}`;
+        const response = await axios.get(url);
+        return response.data;
+    }
 }
 export default new MovieApi;

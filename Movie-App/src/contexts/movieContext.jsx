@@ -1,11 +1,15 @@
 import { createContext, useState, useEffect, useContext, useCallback } from "react";
 import movieApi from "../api/movie-api";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const MovieContext = createContext();
 
 export const MovieProvider = ({ children }) => {
   const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState({ year: '' });
+  const [filter, setFilter] = useState({
+    year: 'All',
+    genre: 'Action'
+  });
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,7 +22,6 @@ export const MovieProvider = ({ children }) => {
     popular: [],
     isLoading: true
   });
-
   // 1. Fetch Genres
   const fetchGenres = useCallback(async () => {
     try {
@@ -64,25 +67,36 @@ export const MovieProvider = ({ children }) => {
 
   useEffect(() => {
     if (!query) {
-      setResults([]);
+      movieApi.getMoviesBySearch("Anime", filter.year,currentPage)
+        .then((response) => {
+          console.log("Dữ liệu trong response:", response);
+          setResults(response);
+        })
+        .catch((err) => console.error(err))
+        .finally(() => setLoading(false));
       return;
     }
-
     const fetchMovies = async () => {
       setLoading(true);
+      if (!query) {
+        'test'
+        setResults(homeMovies.topRated);
+        setLoading(false);
+        return;
+      }
       try {
-        const data = await movieApi.searchMovies(query, filter.year, currentPage);
+        const data = await movieApi.getMoviesBySearch(query, filter.year, currentPage);
         setResults(data);
       } catch (err) {
         console.error("Fetch movies error:", err);
       } finally {
         setLoading(false);
       }
-    };
 
+    };
     const timer = setTimeout(fetchMovies, 500);
     return () => clearTimeout(timer);
-  }, [query, filter.year, currentPage]); 
+  }, [query, filter.year, currentPage, homeMovies.topRated]);
 
   const value = {
     query, setQuery,
