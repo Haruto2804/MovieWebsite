@@ -101,6 +101,12 @@ class MovieApi {
         const response = await axios.get(url);
         return response.data.results;
     }
+    getMoreVideos = async (movieId) => {
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+        const url = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${apiKey}`;
+        const response = await axios.get(url);
+        return response.data.results;
+    }
     
 
 }

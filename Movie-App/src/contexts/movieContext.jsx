@@ -29,7 +29,6 @@ export const MovieProvider = ({ children }) => {
     }
   }, []);
 
-  // 2. Load trang chủ (Chạy 1 lần duy nhất)
   useEffect(() => {
     const loadInitialData = async () => {
       try {

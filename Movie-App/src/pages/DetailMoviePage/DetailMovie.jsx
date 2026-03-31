@@ -13,27 +13,46 @@ import { Loader2 } from "lucide-react";
 import BackButton from '../../components/common/BackButton.jsx'
 import { getFullImageUrl } from "../../util.js";
 import ProductionSection from "./ProductionSection.jsx";
+import VideoCard from "../../components/common/VideoCard.jsx";
+import RelatedVideoSection from "./RelatedVideoSection.jsx";
+import TrailerSection from "./TrailerSection.jsx";
 const DetailMovie = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
+  // thông tin chi tiết của phim hiện tại
   const [currentMovie, setCurrentMovie] = useState(null);
+  // danh sách diễn viên phim hiện tại
   const [credits, setCredits] = useState([]);
+  // danh sách phim tương tự vided hiện tại
   const [similar, setSimilar] = useState([]);
-  console.log(currentMovie)
+  // danh sách các video liên quan của phim hiện tại
+  const [videos, setVideos] = useState([]);
+  // số lượng video hiển thị hiện tại trên giao diện
+  const [visibleVideos, setVisibleVideo] = useState(4);
+  const [visibleTrailerVideos, setVisibleTrailerVideos] = useState(4);
+  const trailerVideo = useMemo(() => {
+    if (!videos || videos.length === 0) {
+      return [];
+    }
+    return videos.filter((item) => item.type === 'Trailer')
+  }, [videos])
+  console.log('trailer video', trailerVideo)
+  console.log(videos)
   useEffect(() => {
     const fetchAllInfoCurrentMovie = async () => {
       setLoading(true); // BẬT LOADING
       try {
-        const [currentMovieRes, creditsRes, similarRes] = await Promise.all([
+        const [currentMovieRes, creditsRes, similarRes, videosRes] = await Promise.all([
           movieApi.getDetailsMovie(id),
           movieApi.getCreditsMovie(id),
-          movieApi.getSimilarMovie(id)
+          movieApi.getSimilarMovie(id),
+          movieApi.getMoreVideos(id)
         ]);
 
         setCurrentMovie(currentMovieRes);
         setCredits(creditsRes || []);
         setSimilar(similarRes || []);
-
+        setVideos(videosRes || []);
       } catch (error) {
         console.error("Lỗi khi tải chi tiết phim:", error);
       } finally {
@@ -46,7 +65,14 @@ const DetailMovie = () => {
       window.scrollTo(0, 0); // Cuộn lên đầu khi đổi phim
     }
   }, [id]);
-
+  const handleLoadMore = (() => {
+    // thêm 4 videos nữa
+    setVisibleVideo(prev => prev + 4);
+  })
+  const handleLoadMoreTrailer = (() => {
+    // thêm 4 videos nữa
+    setVisibleTrailerVideos(prev => prev + 4);
+  })
   // Format dữ liệu bằng useMemo để tối ưu
   const displayRuntime = useMemo(() => {
     if (!currentMovie?.runtime) return "N/A";
@@ -114,6 +140,16 @@ const DetailMovie = () => {
           </div>
         </div>
       </div>
+      <TrailerSection
+        visibleVideos={visibleTrailerVideos}
+        handleLoadMore={handleLoadMoreTrailer}
+        videos={trailerVideo.slice(0, visibleVideos)} />
+      {/* Related Videos Section */}
+      <RelatedVideoSection
+        visibleVideos={visibleVideos}
+        handleLoadMore={handleLoadMore}
+        videos={videos.slice(0, visibleVideos)} />
+
 
       {/* Cast Section */}
       <div className="px-10">
