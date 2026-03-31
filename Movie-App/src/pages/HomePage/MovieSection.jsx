@@ -13,7 +13,7 @@ const MovieSection = ({ title, movieList }) => {
       <h2 className="text-xl font-bold text-white mb-4">{title}</h2>
       <Swiper
         modules={[Navigation, FreeMode, Mousewheel, Keyboard, Autoplay]}
-        autoplay={ {delay: 10000}}
+        autoplay={ {delay: 5000}}
         freeMode={true}
         navigation={true}
         keyboard={true}
