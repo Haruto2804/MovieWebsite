@@ -19,7 +19,7 @@ const formatTitle = (key) => {
 
 const Home = () => {
   const { homeMovies, featuredMovie } = useContext(MovieContext);
-  console.log('top phim', featuredMovie)
+  console.log(homeMovies)
 
   return (
     <>

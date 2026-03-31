@@ -50,35 +50,58 @@ class MovieApi {
         return response.data;
     }
     fetchGenres = async () => {
-        const apiKey = import.meta.env.VITE_TMDB_API_KEY; 
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
         const url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`;
         const response = await axios.get(url);
         return response.data;
     }
     getPlayingMovie = async () => {
-        const apiKey = import.meta.env.VITE_TMDB_API_KEY; 
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
         const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
         const response = await axios.get(url);
         return response.data;
     }
     getPopularMovie = async () => {
-        const apiKey = import.meta.env.VITE_TMDB_API_KEY; 
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
         const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;
         const response = await axios.get(url);
         return response.data;
     }
     getTopRatedMovie = async () => {
-        const apiKey = import.meta.env.VITE_TMDB_API_KEY; 
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
         const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
         const response = await axios.get(url);
         return response.data;
     }
     getUpcomingMovie = async () => {
-        const apiKey = import.meta.env.VITE_TMDB_API_KEY; 
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
         const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
         const response = await axios.get(url);
         return response.data;
     }
+    // Các hàm lấy thông tin phim
+    //lấy chi tiết phim
+    getDetailsMovie = async (movieId) => {
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+        const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`;
+        const response = await axios.get(url);
+        return response.data;
+    }
+    //hàm lấy chi tiết diễn viên phim theo id movie
+    getCreditsMovie = async (movieId) => {
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+        const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${apiKey}`;
+        const response = await axios.get(url);
+        return response.data.cast;
+    }
+    //hàm lấy phim tuong tu theo movie id
+    getSimilarMovie = async (movieId) => {
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+        const url = `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${apiKey}`;
+        const response = await axios.get(url);
+        return response.data.results;
+    }
+    
 
 }
 export default new MovieApi;
