@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useState, useRef } from "react"
 import { useParams } from "react-router-dom";
 import movieApi from "../../api/movie-api.js";
 import Label from "../../components/common/Label"
@@ -16,6 +16,7 @@ import ProductionSection from "./ProductionSection.jsx";
 import VideoCard from "../../components/common/VideoCard.jsx";
 import RelatedVideoSection from "./RelatedVideoSection.jsx";
 import TrailerSection from "./TrailerSection.jsx";
+import TrailerModal from "./TrailerModal.jsx";
 const DetailMovie = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
@@ -29,15 +30,20 @@ const DetailMovie = () => {
   const [videos, setVideos] = useState([]);
   // số lượng video hiển thị hiện tại trên giao diện
   const [visibleVideos, setVisibleVideo] = useState(4);
+  // so luong video hien thi cho trailer video
   const [visibleTrailerVideos, setVisibleTrailerVideos] = useState(4);
+
+
+  // quan ly trang thai modal trailer phim
+  const [isOpen, setIsOpen] = useState(false);
+
   const trailerVideo = useMemo(() => {
     if (!videos || videos.length === 0) {
       return [];
     }
     return videos.filter((item) => item.type === 'Trailer')
   }, [videos])
-  console.log('trailer video', trailerVideo)
-  console.log(videos)
+  
   useEffect(() => {
     const fetchAllInfoCurrentMovie = async () => {
       setLoading(true); // BẬT LOADING
@@ -73,14 +79,23 @@ const DetailMovie = () => {
     // thêm 4 videos nữa
     setVisibleTrailerVideos(prev => prev + 4);
   })
-  // Format dữ liệu bằng useMemo để tối ưu
   const displayRuntime = useMemo(() => {
     if (!currentMovie?.runtime) return "N/A";
     const hours = Math.floor(currentMovie.runtime / 60);
     const minutes = currentMovie.runtime % 60;
     return `${hours}h ${minutes}m`;
   }, [currentMovie]);
-
+  const handlePlayButton = () => {
+    // 1. Cuộn xuống
+    trailerRef.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+    setTimeout(() => {
+      setIsOpen(true);
+    }, 1000);
+  };
+  const trailerRef = useRef(null);
   if (loading) {
     return (
       <div className="flex flex-col items-center justify-center min-h-150 w-full gap-4">
@@ -133,17 +148,24 @@ const DetailMovie = () => {
           <div className="flex gap-4 items-center mt-4">
             <button className="flex gap-3 items-center bg-white rounded-lg px-8 py-3 cursor-pointer transition-all hover:bg-cine-red group active:scale-95 shadow-xl">
               <FaPlay className="size-5 text-black group-hover:text-white" />
-              <span className="text-black text-md font-bold group-hover:text-white uppercase">Play Now</span>
+              <span
+                onClick={() => handlePlayButton()}
+                className="text-black text-md font-bold group-hover:text-white uppercase">Play Now</span>
             </button>
             <FavoriteButton movie={currentMovie} />
             <ShareButton />
           </div>
         </div>
       </div>
+      <div ref={trailerRef}>
+
+      </div>
       <TrailerSection
         visibleVideos={visibleTrailerVideos}
         handleLoadMore={handleLoadMoreTrailer}
-        videos={trailerVideo.slice(0, visibleVideos)} />
+        videos={trailerVideo.slice(0, visibleVideos)}
+      />
+
       {/* Related Videos Section */}
       <RelatedVideoSection
         visibleVideos={visibleVideos}
@@ -162,6 +184,14 @@ const DetailMovie = () => {
       <div className="px-10">
         <MovieSection title="More Like This" movieList={similar} />
       </div>
+
+      {trailerVideo && trailerVideo.length > 0 && (
+        <TrailerModal 
+        videoId={trailerVideo[0].key} 
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        />
+      )}
     </div>
   )
 }
