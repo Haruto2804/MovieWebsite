@@ -1,8 +1,6 @@
-import { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useState, useEffect, useContext, useCallback } from "react";
 import movieApi from "../api/movie-api";
 
-// 1. Đặt tên PascalCase
-// eslint-disable-next-line react-refresh/only-export-components
 export const MovieContext = createContext();
 
 export const MovieProvider = ({ children }) => {
@@ -11,14 +9,67 @@ export const MovieProvider = ({ children }) => {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [genres, setGenres] = useState([]);
+  const [featuredMovie, setFeaturedMovie] = useState(null);
+  const [homeMovies, setHomeMovies] = useState({
+    playing: [],
+    upcoming: [],
+    topRated: [],
+    popular: [],
+    isLoading: true
+  });
+
+  // 1. Fetch Genres
+  const fetchGenres = useCallback(async () => {
+    try {
+      const response = await movieApi.fetchGenres();
+      setGenres(response?.genres || []);
+    } catch (error) {
+      console.error("Lỗi khi lấy danh sách thể loại:", error);
+    }
+  }, []);
+
+  // 2. Load trang chủ (Chạy 1 lần duy nhất)
+  useEffect(() => {
+    const loadInitialData = async () => {
+      try {
+        console.log('Đang load dữ liệu trang chủ...');
+        const [playingRes, upcomingRes, topRatedRes, popularRes] = await Promise.all([
+          movieApi.getPlayingMovie(), // THÊM DẤU ()
+          movieApi.getUpcomingMovie(), // THÊM DẤU ()
+          movieApi.getTopRatedMovie(), // THÊM DẤU ()
+          movieApi.getPopularMovie()  // THÊM DẤU ()
+        ]);
+
+        setHomeMovies({
+          playing: playingRes.results || [],
+          upcoming: upcomingRes.results || [],
+          topRated: topRatedRes.results || [],
+          popular: popularRes.results || [],
+          isLoading: false
+        });
+
+        // chọn phim ngẫu nhiên từ top rated
+        const topRatedMovie = topRatedRes.results;
+        if (topRatedMovie.length > 0) {
+          const random = topRatedMovie[Math.floor(Math.random() * topRatedMovie.length)];
+          setFeaturedMovie(random);
+        }
+      } catch (err) {
+        console.error("Lỗi load trang chủ:", err);
+        setHomeMovies(prev => ({ ...prev, isLoading: false }));
+      }
+    };
+    loadInitialData();
+  }, []);
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      if (!query) {
-        setResults([]);
-        return;
-      }
+    if (!query) {
+      setResults([]);
+      return;
+    }
 
+    const fetchMovies = async () => {
       setLoading(true);
       try {
         const data = await movieApi.searchMovies(query, filter.year, currentPage);
@@ -32,15 +83,17 @@ export const MovieProvider = ({ children }) => {
 
     const timer = setTimeout(fetchMovies, 500);
     return () => clearTimeout(timer);
-  }, [query, filter, currentPage]);
+  }, [query, filter.year, currentPage]); 
 
-  // 2. Dùng Object để truyền value
   const value = {
     query, setQuery,
     filter, setFilter,
     results,
     loading,
-    currentPage, setCurrentPage
+    currentPage, setCurrentPage,
+    fetchGenres, genres,
+    homeMovies,
+    featuredMovie
   };
 
   return (
@@ -50,8 +103,6 @@ export const MovieProvider = ({ children }) => {
   );
 };
 
-// 3. Tạo một Custom Hook để dùng cho tiện
-// eslint-disable-next-line react-refresh/only-export-components
 export const useMovieContext = () => {
   const context = useContext(MovieContext);
   if (!context) {

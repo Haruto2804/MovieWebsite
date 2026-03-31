@@ -1,10 +1,13 @@
 import axios from "axios";
 class MovieApi {
-    fetchMovie = async (keyword) => {
-        const apiKey = import.meta.env.VITE_OMDB_API_KEY;
-        const url = `https://www.omdbapi.com/?s=${keyword}&apikey=${apiKey}`;
-        const response = await axios.get(url);
-        return response;
+    fetchMovie = async (page) => {
+        if (page) {
+            const apiKey = import.meta.env.VITE_OMDB_API_KEY;
+            // const url = `https://www.omdbapi.com/?s=${keyword}&apikey=${apiKey}`;
+            const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=vi-VN?page=${page}`
+            const response = await axios.get(url);
+            return response;
+        }
     }
     fetchDetailMovie = async (movieId) => {
         const apiKey = import.meta.env.VITE_OMDB_API_KEY;
@@ -40,11 +43,42 @@ class MovieApi {
             // eslint-disable-next-line no-unused-vars
         } catch (err) { return []; }
     }
-    searchMovies = async (query, year,currentPage) => {
+    searchMovies = async (query, year, currentPage) => {
         const apiKey = import.meta.env.VITE_OMDB_API_KEY;
         const url = `https://www.omdbapi.com/?s=${query}&apikey=${apiKey}&y=${year}&page=${currentPage}`;
         const response = await axios.get(url);
         return response.data;
     }
+    fetchGenres = async () => {
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY; 
+        const url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`;
+        const response = await axios.get(url);
+        return response.data;
+    }
+    getPlayingMovie = async () => {
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY; 
+        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
+        const response = await axios.get(url);
+        return response.data;
+    }
+    getPopularMovie = async () => {
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY; 
+        const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;
+        const response = await axios.get(url);
+        return response.data;
+    }
+    getTopRatedMovie = async () => {
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY; 
+        const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
+        const response = await axios.get(url);
+        return response.data;
+    }
+    getUpcomingMovie = async () => {
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY; 
+        const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apiKey}`;
+        const response = await axios.get(url);
+        return response.data;
+    }
+
 }
 export default new MovieApi;

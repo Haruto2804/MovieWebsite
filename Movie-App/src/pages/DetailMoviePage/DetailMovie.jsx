@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react"
+import { useEffect, useMemo, useState, useContext } from "react"
 import { useParams } from "react-router-dom";
 import movieApi from "../../api/movie-api.js";
 import Label from "../../components/common/Label"
@@ -14,6 +14,7 @@ import MovieSection from "../HomePage/MovieSection"
 import RatingSection from '../DetailMoviePage/RatingSection.jsx'
 import { Loader2 } from "lucide-react";
 import BackButton from '../../components//common/BackButton.jsx'
+import { MovieContext } from "../../contexts/movieContext.jsx";
 const formatRuntime = (runtimeStr) => {
   if (!runtimeStr || runtimeStr === "N/A") return "N/A";
   const totalMinutes = parseInt(runtimeStr);
@@ -27,7 +28,6 @@ const DetailMovie = () => {
   const [movie, setMovie] = useState(null); // Để null ban đầu để check !movie
   const [suggestedMovies, setSuggestedMovies] = useState([]);
   const [loading, setLoading] = useState(true);
-
   // Chỉ chạy khi id (trên URL) thay đổi
   useEffect(() => {
     const fetchAllData = async () => {
