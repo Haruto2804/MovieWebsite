@@ -107,7 +107,12 @@ class MovieApi {
         const response = await axios.get(url);
         return response.data.results;
     }
-    
+    getTrailerVideos = async (movieId) => {
+        const videos = await this.getMoreVideos(movieId);
+        const trailerVideos = videos.filter((item)=>item.type ==='Trailer');
+        return trailerVideos;
+    }
+
 
 }
 export default new MovieApi;

@@ -4,9 +4,11 @@ import { FaPlay } from "react-icons/fa";
 import { IoInformationCircleOutline } from "react-icons/io5";
 import FavoriteButton from "../../components/common/FavoriteButton";
 import MovieSection from "./MovieSection";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/authContext";
 import { MovieContext } from "../../contexts/movieContext";
+import TrailerModal from '../DetailMoviePage/TrailerModal'
+import movieApi from "../../api/movie-api";
 const formatTitle = (key) => {
   const titles = {
     playing: "Playing",
@@ -16,14 +18,37 @@ const formatTitle = (key) => {
   };
   return titles[key] || key;
 };
-
 const Home = () => {
   const { homeMovies, featuredMovie } = useContext(MovieContext);
-  console.log(homeMovies)
+  const [isOpen, setIsOpen] = useState(false);
+  const [trailerVideos, setTrailerVideos] = useState([]);
+  const handlePlayButton = async () => {
+    if (!featuredMovie?.id) return;
 
+    try {
+      // Gọi API lấy trailer dựa trên ID phim đang Featured
+      const videos = await movieApi.getTrailerVideos(featuredMovie.id);
+      setTrailerVideos(videos);
+      // Nếu có video thì mới mở Modal
+      if (videos && videos.length > 0) {
+        setIsOpen(true);
+      } else {
+        alert("Phim này hiện chưa có trailer!");
+      }
+    } catch (error) {
+      console.error("Lỗi lấy trailer:", error);
+    }
+  };
   return (
     <>
       <div className="flex flex-col gap-10 w-full p-2">
+        {isOpen && (
+          <TrailerModal
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            videoId={trailerVideos[0].key}
+          />
+        )}
 
         <div className="relative p-4 min-h-137.5 flex items-center">
           {/* 1. Ảnh nền Banner: Dùng backdrop_path thay vì ảnh fix cứng */}
@@ -64,7 +89,9 @@ const Home = () => {
             </p>
 
             <div className="flex gap-3 items-center mt-2">
-              <button className="flex gap-3 items-center bg-white rounded-lg px-8 py-3 
+              <button
+                onClick={handlePlayButton}
+                className="flex gap-3 items-center bg-white rounded-lg px-8 py-3 
         cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-cine-red 
         group active:scale-95 shadow-lg">
                 <FaPlay className="size-5 text-black group-hover:text-white" />
