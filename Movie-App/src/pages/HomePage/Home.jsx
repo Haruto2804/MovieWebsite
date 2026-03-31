@@ -4,11 +4,14 @@ import { FaPlay } from "react-icons/fa";
 import { IoInformationCircleOutline } from "react-icons/io5";
 import FavoriteButton from "../../components/common/FavoriteButton";
 import MovieSection from "./MovieSection";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useContext } from "react";
 import axios from "axios";
+import { AuthContext } from "../../contexts/authContext";
 const Home = () => {
   const [sectionMovie, setSectionMovie] = useState({});
   const [loading, setLoading] = useState(true);
+  const {user,login}= useContext(AuthContext);
+
   const genresToShow = useMemo(() => ["Anime", "Fantasy", "Isekai", "Marvel"], [])
   useEffect(() => {
     const fetchAllSection = async () => {
@@ -16,7 +19,6 @@ const Home = () => {
       if(savedData) {
         setSectionMovie(JSON.parse(savedData));
         setLoading(false);
-        console.log('Dũ liệu lấy từ Local Storage')
         return;
       }
       setLoading(true);
@@ -44,7 +46,6 @@ const Home = () => {
     }
     fetchAllSection();
   }, [genresToShow])
-  console.log(sectionMovie)
   return (
     <>
       <div className="flex flex-col gap-10 w-full p-2">

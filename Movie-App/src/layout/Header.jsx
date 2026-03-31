@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { GoSearch } from "react-icons/go";
 import { FiUser, FiX } from "react-icons/fi"; // Thêm icon đóng (X)
 import { RiMovie2AiFill } from "react-icons/ri";
@@ -7,6 +7,9 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineHome } from "react-icons/ai"; // Icon bổ trợ cho Sidebar
 import { MdOutlineExplore } from "react-icons/md"; // Icon bổ trợ cho Sidebar
 import LoginButton from "../components/common/LoginButton";
+import AuthService from "../services/authService";
+import { AuthContext } from "../contexts/authContext";
+import LogoutButton from '../components/common/LogoutButton'
 const navigation = [
   {
     value: 'Home', path: '/'
@@ -16,7 +19,7 @@ const navigation = [
   }
 ]
 const Header = () => {
-  const [login, setLogin] = useState(false);
+  const {login,user,handleLogout} = useContext(AuthContext);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Hàm helper để đóng sidebar khi click vào link
@@ -38,7 +41,7 @@ const Header = () => {
             <div className="group cursor-pointer bg-cine-gradient p-2 rounded-lg">
               <RiMovie2AiFill className="size-6 text-white group-hover:scale-110 transition-all duration-300" />
             </div>
-            <p className="text-2xl font-bold bg-cine-gradient bg-clip-text text-transparent">
+            <p className=" hidden md:block text-2xl font-bold bg-cine-gradient bg-clip-text text-transparent">
               CineStream
             </p>
           </Link>
@@ -52,16 +55,19 @@ const Header = () => {
 
 
         {login === false ? (
-          <LoginButton />
+          <LoginButton 
+          login = {()=> AuthService.login()}
+          />
         ) : (
           <div className="flex gap-3">
-            <div className="rounded-full flex items-center p-2 cursor-pointer hover:bg-slate-800 transition-all duration-300">
-              <GoSearch className="size-5 text-slate-300" />
-            </div>
-            <div className="rounded-full flex items-center p-2 cursor-pointer hover:bg-slate-800 transition-all duration-300">
+            <div className="rounded-full flex gap-2 items-center p-2 cursor-pointer hover:bg-slate-800 transition-all duration-300">
               <FiUser className="size-5 text-slate-300" />
+              {user.username}
             </div>
+            <LogoutButton 
+            logout={()=> handleLogout()}/>
           </div>
+          
         )}
       </header>
 
