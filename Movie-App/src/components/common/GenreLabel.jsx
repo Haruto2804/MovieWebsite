@@ -1,15 +1,17 @@
+import { useNavigate } from "react-router-dom";
+
 const GenreLabel = ({ genreLabel = "" }) => {
   const genres = genreLabel ? genreLabel.split(',').map(g => g.trim()) : [];
-
   if (genres.length === 0) return null;
 
   return (
-    <div className="flex flex-wrap gap-3 mt-4">
+    <div
+      className="flex flex-wrap gap-3 mt-4">
       {genres.map((genre, index) => (
-        <span 
+        <span
           key={index}
           className="
-      
+          
             px-4 py-1.5 text-[12px] font-black 
             cursor-pointer
             /* Colors & Border: Dùng tông Zinc sâu để nổi bật text */

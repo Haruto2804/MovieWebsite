@@ -17,6 +17,7 @@ import VideoCard from "../../components/common/VideoCard.jsx";
 import RelatedVideoSection from "./RelatedVideoSection.jsx";
 import TrailerSection from "./TrailerSection.jsx";
 import TrailerModal from "./TrailerModal.jsx";
+import WatchlistButton from "../../components/common/WatchListButton.jsx";
 const DetailMovie = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
@@ -154,6 +155,7 @@ const DetailMovie = () => {
             </button>
             <FavoriteButton movie={currentMovie} />
             <ShareButton />
+            <WatchlistButton/>
           </div>
         </div>
       </div>

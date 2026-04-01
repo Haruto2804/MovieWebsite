@@ -29,13 +29,6 @@ const FilterSection = ({ setFilter }) => {
           title="Year"
           type="year"
         />
-        <Filter
-          key="2"
-          setFilter={setFilter}
-          options={genres}
-          title="Genre"
-          type="genre"
-        />
 
       </div>
     </div>

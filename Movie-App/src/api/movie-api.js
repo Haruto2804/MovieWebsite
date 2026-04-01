@@ -112,11 +112,123 @@ class MovieApi {
         const trailerVideos = videos.filter((item) => item.type === 'Trailer');
         return trailerVideos;
     }
-    getMoviesBySearch = async (keyword,year,page) => {
+    getMoviesBySearch = async (keyword, year, page) => {
         const apiKey = import.meta.env.VITE_TMDB_API_KEY;
         const url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${keyword}&page=${page}&primary_release_year=${year}`;
+
         const response = await axios.get(url);
         return response.data;
     }
+    addFavorite = async (accountId, movieId) => {
+        const session_id = localStorage.getItem('tmdb_session_id');
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+        const url = `https://api.themoviedb.org/3/account/${accountId}/favorite?api_key=${apiKey}&session_id=${session_id}`;
+
+        const bodyData = {
+            media_type: "movie",
+            media_id: movieId,
+            favorite: true
+        };
+
+        try {
+            const response = await axios.post(url, bodyData);
+            return response;
+        } catch (error) {
+            console.error("Lỗi khi thêm yêu thích:", error);
+        }
+    };
+    removeFavorite = async (accountId, movieId) => {
+        const session_id = localStorage.getItem('tmdb_session_id');
+        if (!session_id) {
+            console.error("Không tìm thấy session_id trong localStorage");
+            return null;
+        }
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+        const url = `https://api.themoviedb.org/3/account/${accountId}/favorite?api_key=${apiKey}&session_id=${session_id}`;
+
+        const bodyData = {
+            media_type: "movie",
+            media_id: movieId,
+            favorite: false
+        };
+
+        try {
+            const response = await axios.post(url, bodyData);
+            return response;
+        } catch (error) {
+            console.error("Lỗi khi thêm yêu thích:", error);
+        }
+    };
+    addToWatchlist = async (accountId, movieId) => {
+        const session_id = localStorage.getItem('tmdb_session_id');
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+        const url = `https://api.themoviedb.org/3/account/${accountId}/watchlist?api_key=${apiKey}&session_id=${session_id}`;
+        const bodyData = {
+            media_type: "movie",
+            media_id: movieId,
+            watchlist: true
+        };
+
+        try {
+            const response = await axios.post(url, bodyData);
+            return response;
+        } catch (error) {
+            console.error("Lỗi khi thêm vào danh sách xem sau:", error);
+        }
+    };
+
+    removeFromWatchlist = async (accountId, movieId) => {
+        const session_id = localStorage.getItem('tmdb_session_id');
+        if (!session_id) {
+            console.error("Không tìm thấy session_id trong localStorage");
+            return null;
+        }
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+        const url = `https://api.themoviedb.org/3/account/${accountId}/watchlist?api_key=${apiKey}&session_id=${session_id}`;
+
+        const bodyData = {
+            media_type: "movie",
+            media_id: movieId,
+            watchlist: false
+        };
+
+        try {
+            const response = await axios.post(url, bodyData);
+            return response;
+        } catch (error) {
+            console.error("Lỗi khi xóa khỏi danh sách xem sau:", error);
+        }
+    };
+
+    getWatchlist = async (accountId, page = 1) => {
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+        const session_id = localStorage.getItem('tmdb_session_id');
+
+        if (!session_id) {
+            console.error("Missing session_id");
+            return null;
+        }
+        const url = `https://api.themoviedb.org/3/account/${accountId}/watchlist/movies?api_key=${apiKey}&session_id=${session_id}&language=vi-VN&sort_by=created_at.desc&page=${page}`;
+        try {
+            const response = await axios.get(url);
+            return response.data; // Trả về object chứa mảng results
+        } catch (error) {
+            console.error("Lỗi khi lấy Watchlist:", error);
+            throw error;
+        }
+    }
+    getFavoriteMovie = async (accountId) => {
+        const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+
+        const session_id = localStorage.getItem('tmdb_session_id');
+        if (!session_id) {
+            console.error("Không tìm thấy session_id trong localStorage");
+            return null;
+        }
+        const url = `https://api.themoviedb.org/3/account/${accountId}/favorite/movies?api_key=${apiKey}&session_id=${session_id}`
+        const response = await axios.get(url);
+        return response.data;
+    }
+
 }
 export default new MovieApi;

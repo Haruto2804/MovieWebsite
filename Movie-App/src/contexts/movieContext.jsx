@@ -69,7 +69,6 @@ export const MovieProvider = ({ children }) => {
     if (!query) {
       movieApi.getMoviesBySearch("Anime", filter.year,currentPage)
         .then((response) => {
-          console.log("Dữ liệu trong response:", response);
           setResults(response);
         })
         .catch((err) => console.error(err))

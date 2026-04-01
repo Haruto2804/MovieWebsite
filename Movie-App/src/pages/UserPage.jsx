@@ -5,77 +5,62 @@ import { FaRegHeart } from "react-icons/fa6";
 import { LuHistory } from "react-icons/lu";
 import { MdLocalMovies } from "react-icons/md";
 import MovieSection from "./HomePage/MovieSection";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/authContext";
-
-const userStats = [
-  {
-    icon: <FaRegHeart />,
-    value: 10, // Dùng dấu hai chấm :
-    title: "Favorite",
-    colorClass: "text-red-500",
-  },
-  {
-    icon: <LuHistory />,
-    value: 124,
-    title: "Watch List",
-    colorClass: "text-purple-500",
-  },
-  {
-    icon: <MdLocalMovies />,
-    value: 8.5,
-    title: "Total Movies",
-    colorClass: "text-cine-red",
-  }
-];
-export const mockOMDbMovies = [
-  {
-    imdbID: "tt0111161",
-    Title: "The Shawshank Redemption",
-    Year: "1994",
-    Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BMDAyY2ViOTAtOWU4Ni00NmNmLTVmNTUtMmIyM2E1M2RjZDgxXkEyXkFqcGdeQXVyOTAyMDgxODQ@._V1_SX300.jpg"
-  },
-  {
-    imdbID: "tt1375666",
-    Title: "Inception",
-    Year: "2010",
-    Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg"
-  },
-  {
-    imdbID: "tt0468569",
-    Title: "The Dark Knight",
-    Year: "2008",
-    Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg"
-  },
-  {
-    imdbID: "tt0109830",
-    Title: "Forrest Gump",
-    Year: "1994",
-    Type: "movie",
-    Poster: "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Y2I1LWJhNzYtMmZiYmUx2Zjk3N2RlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
-  }
-];
-
+import movieApi from "../api/movie-api";
 const UserPage = (() => {
-  const {user} = useContext(AuthContext);
-  console.log(user);
+  const { user } = useContext(AuthContext);
+  const [favorites, setFavorites] = useState({
+    results: [],
+    count: 0
+  });
+  const [watchList, setWatchlist] = useState({
+    results: [],
+    count: 0
+  })
   const getAvatarUrl = (user) => {
-  // 1. Kiểm tra nếu có ảnh trực tiếp từ TMDB
-  if (user.avatar.tmdb.avatar_path) {
-    return `https://image.tmdb.org/t/p/w200${user.avatar.tmdb.avatar_path}`;
-  }
-  
-  // 2. Nếu không có, lấy từ Gravatar bằng cái hash
-  if (user.avatar.gravatar.hash) {
-    return `https://www.gravatar.com/avatar/${user.avatar.gravatar.hash}?s=200`;
-  }
+    // 1. Kiểm tra nếu có ảnh trực tiếp từ TMDB
+    if (user.avatar.tmdb.avatar_path) {
+      return `https://image.tmdb.org/t/p/w200${user.avatar.tmdb.avatar_path}`;
+    }
 
-  // 3. Nếu cả hai đều không có, dùng một ảnh mặc định (Placeholder)
-  return `https://ui-avatars.com/api/?name=${user.username}&background=random`;
-};
+    // 2. Nếu không có, lấy từ Gravatar bằng cái hash
+    if (user.avatar.gravatar.hash) {
+      return `https://www.gravatar.com/avatar/${user.avatar.gravatar.hash}?s=200`;
+    }
+
+    // 3. Nếu cả hai đều không có, dùng một ảnh mặc định (Placeholder)
+    return `https://ui-avatars.com/api/?name=${user.username}&background=random`;
+  };
+  useEffect(() => {
+    const fetchAllStatusData = async () => {
+      if (!user?.id) return;
+
+      try {
+        // Gọi cả 2 API cùng lúc
+        const [favRes, watchRes] = await Promise.all([
+          movieApi.getFavoriteMovie(user.id),
+          movieApi.getWatchlist(user.id)
+        ]);
+
+        setFavorites({
+          results: favRes.results,
+          count: favRes.total_results
+        });
+
+        setWatchlist({
+          results: watchRes.results,
+          count: watchRes.total_results
+        });
+
+        console.log("Dữ liệu đã load xong:", { favRes, watchRes });
+      } catch (error) {
+        console.error("Lỗi khi lấy dữ liệu User:", error);
+      }
+    };
+
+    fetchAllStatusData();
+  }, [user.id]); console.log(favorites)
   return (
     <div className="mt-5 flex flex-col gap-7 w-full">
       {/* user header profile */}
@@ -93,23 +78,35 @@ const UserPage = (() => {
       </div>
       {/* user stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 w-full">
-        {userStats.map((item, index) => (
-          <UserStatCard
-            key={index}
-            icon={item.icon}
-            value={item.value}
-            title={item.title}
-            colorClass={item.colorClass}
-          />
-        ))}
+        <UserStatCard
+          key="1"
+          icon={<FaRegHeart />}
+          value={favorites.count}
+          title="Favorite"
+          colorClass="text-red-500"
+        />
+        <UserStatCard
+          key="2"
+          icon={<LuHistory />}
+          value={watchList.count}
+          title="Watch List"
+          colorClass="text-purple-500"
+        />
+        <UserStatCard
+          key="2"
+          icon={<MdLocalMovies />}
+          value={watchList.count + favorites.count}
+          title="Total Movies"
+          colorClass="text-cine-red"
+        />
       </div>
-      <MovieSection 
+      <MovieSection
         title="Favorite Movie"
-        movieList={mockOMDbMovies}
+        movieList={favorites.results.toReversed()}
       />
-        <MovieSection 
+      <MovieSection
         title="Watch List "
-        movieList={mockOMDbMovies}
+        movieList={watchList.results.toReversed()}
       />
     </div>
   )
