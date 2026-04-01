@@ -93,7 +93,7 @@ const Home = () => {
             <div className="flex gap-3 items-center mt-2">
               <button
                 onClick={handlePlayButton}
-                className="flex gap-3 items-center bg-white rounded-lg px-8 py-3 
+                className="flex flex-wrap gap-3 items-center bg-white rounded-lg px-8 py-3 
         cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-cine-red 
         group active:scale-95 shadow-lg">
                 <FaPlay className="size-5 text-black group-hover:text-white" />
@@ -109,10 +109,7 @@ const Home = () => {
                   <IoInformationCircleOutline className="size-6" />
                   <span className="text-md font-bold">More Info</span>
                 </button>
-  
 
-
-              <FavoriteButton movie={featuredMovie} />
             </div>
           </div>
         </div>

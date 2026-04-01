@@ -111,7 +111,7 @@ const DetailMovie = () => {
   return (
     <div className="flex flex-col gap-10 w-full pb-20">
       {/* Banner Section */}
-      <div className="relative w-full min-h-150 flex items-center px-4">
+      <div className="relative w-full min-h-150 flex items-center p-4">
         <div
           style={{ backgroundImage: `url(${getFullImageUrl(currentMovie.backdrop_path, 'original')})` }}
           className="rounded-lg absolute inset-0 bg-cover bg-center transition-all duration-700"
@@ -146,7 +146,7 @@ const DetailMovie = () => {
             {currentMovie.overview}
           </p>
 
-          <div className="flex gap-4 items-center mt-4">
+          <div className="flex gap-4 items-center mt-4 flex-wrap">
             <button className="flex gap-3 items-center bg-white rounded-lg px-8 py-3 cursor-pointer transition-all hover:bg-cine-red group active:scale-95 shadow-xl">
               <FaPlay className="size-5 text-black group-hover:text-white" />
               <span
