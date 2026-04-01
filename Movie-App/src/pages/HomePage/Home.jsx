@@ -53,75 +53,83 @@ const Home = () => {
           />
         )}
 
-        <div className="relative p-4 min-h-137.5 flex items-center">
-          {/* 1. Ảnh nền Banner: Dùng backdrop_path thay vì ảnh fix cứng */}
+        {/* Container chính: Giảm padding trên mobile, giảm min-height cho phù hợp tỷ lệ màn hình dọc */}
+        <div className="relative p-5 md:p-10 min-h-[500px] md:min-h-137.5 flex items-end md:items-center">
+
+          {/* 1. Ảnh nền Banner: Object-cover để không bị méo trên mọi thiết bị */}
           <div
             style={{
               backgroundImage: `url(https://image.tmdb.org/t/p/original${featuredMovie?.backdrop_path})`
             }}
-            className="rounded-lg absolute inset-0 bg-cover bg-center transition-all duration-1000"
+            className="rounded-xl absolute inset-0 bg-cover bg-[center_top] md:bg-center transition-all duration-1000"
           ></div>
 
-          {/* 2. Lớp phủ Gradient: Giúp chữ trắng nổi bật hơn trên mọi loại ảnh */}
-          <div className="absolute inset-0 bg-linear-to-r from-black via-black/60 to-transparent rounded-lg"></div>
+          {/* 2. Lớp phủ Gradient: Tăng độ đậm lớp phủ phía dưới trên mobile để đọc chữ dễ hơn */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 md:bg-linear-to-r md:from-black md:via-black/60 md:to-transparent rounded-xl"></div>
 
-          {/* 3. Nội dung phim */}
-          <div className="mt-10 relative flex flex-col gap-4 max-w-2xl z-10">
-            <Label labelName="Featured" />
+          {/* 3. Nội dung phim: Căn giữa nhẹ trên mobile hoặc đẩy xuống dưới cùng */}
+          <div className="relative flex flex-col gap-3 md:gap-4 max-w-2xl z-10 w-full">
 
-            <div className="text-6xl font-bold text-white drop-shadow-lg">
-              {featuredMovie?.title || featuredMovie?.original_title}
+            <div className="w-fit">
+              <Label labelName="Featured" />
             </div>
 
-            <div className="flex items-center gap-5 text-[15px] text-zinc-200">
+            {/* Title: Responsive font size (text-3xl cho mobile, text-6xl cho desktop) */}
+            <h1 className="text-3xl md:text-6xl font-extrabold text-white drop-shadow-2xl line-clamp-2 md:line-clamp-none">
+              {featuredMovie?.title || featuredMovie?.original_title}
+            </h1>
+
+            {/* Metadata: Giảm size chữ một chút trên mobile */}
+            <div className="flex items-center gap-3 md:gap-5 text-sm md:text-[15px] text-zinc-200 font-medium">
               <div className="flex items-center gap-1">
                 <MdOutlineStar className="size-4 text-yellow-500" />
-                <span className="font-bold">{featuredMovie?.vote_average?.toFixed(2)}</span>
+                <span className="text-white">{featuredMovie?.vote_average?.toFixed(1)}</span>
               </div>
-              <span>•</span>
-              {/* Lấy năm từ release_date */}
+              <span className="opacity-50">•</span>
               <span>{featuredMovie?.release_date?.split("-")[0]}</span>
-              <span>•</span>
-              {/* Ngôn ngữ gốc */}
-              <span className="uppercase">{featuredMovie?.original_language}</span>
+              <span className="opacity-50">•</span>
+              <span className="uppercase bg-white/20 px-1.5 py-0.5 rounded text-[10px] md:text-xs">
+                {featuredMovie?.original_language}
+              </span>
             </div>
 
-            {/* Overview: Dùng line-clamp để không bị quá dài làm nát layout */}
+            {/* Overview: Giảm size chữ trên mobile để không chiếm không gian */}
             <div className="flex flex-col gap-2">
-              <p className={`text-slate-300 text-lg leading-relaxed italic transition-all duration-300 ${!isExpanded ? "line-clamp-3" : ""}`}>
+              <p className={`text-slate-200 text-sm md:text-lg leading-relaxed transition-all duration-300 ${!isExpanded ? "line-clamp-2 md:line-clamp-3" : ""}`}>
                 {featuredMovie?.overview}
               </p>
 
-              {featuredMovie?.overview?.length > 200 && (
+              {featuredMovie?.overview?.length > 150 && (
                 <button
                   onClick={() => setIsExpanded(!isExpanded)}
-                  className="text-cine-red font-bold text-sm uppercase hover:underline w-fit cursor-pointer"
+                  className="text-cine-red font-bold text-xs md:text-sm uppercase hover:underline w-fit cursor-pointer"
                 >
                   {isExpanded ? "Rút gọn" : "Xem thêm"}
                 </button>
               )}
             </div>
 
-            <div className="flex gap-3 items-center mt-2">
+            {/* Button Group: Sắp xếp theo chiều dọc trên mobile nhỏ hoặc ngang trên tablet/desktop */}
+            <div className="flex flex-wrap gap-3 items-center mt-3">
               <button
                 onClick={handlePlayButton}
-                className="flex flex-wrap gap-3 items-center bg-white rounded-lg px-8 py-3 
-        cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-cine-red 
-        group active:scale-95 shadow-lg">
-                <FaPlay className="size-5 text-black group-hover:text-white" />
-                <span className="text-black text-md font-bold group-hover:text-white">Play Now</span>
+                className="flex-1 md:flex-none flex justify-center items-center gap-3 bg-white rounded-lg px-6 md:px-8 py-3 
+        cursor-pointer transition-all duration-300 hover:scale-105 hover:bg-cine-red 
+        group active:scale-95 shadow-lg"
+              >
+                <FaPlay className="size-4 md:size-5 text-black group-hover:text-white" />
+                <span className="text-black text-sm md:text-md font-bold group-hover:text-white whitespace-nowrap">Play Now</span>
               </button>
-
 
               <button
                 onClick={() => navigate(`/movie/${featuredMovie.id}`)}
-                className="flex gap-3 items-center bg-zinc-600/80 backdrop-blur-md rounded-lg px-8 py-3 
-                  cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-500
-                  group active:scale-95 text-white">
-                <IoInformationCircleOutline className="size-6" />
-                <span className="text-md font-bold">More Info</span>
+                className="flex-1 md:flex-none flex justify-center items-center gap-3 bg-zinc-600/60 backdrop-blur-md rounded-lg px-6 md:px-8 py-3 
+          cursor-pointer transition-all duration-300 hover:bg-zinc-500
+          group active:scale-95 text-white shadow-lg"
+              >
+                <IoInformationCircleOutline className="size-5 md:size-6" />
+                <span className="text-sm md:text-md font-bold whitespace-nowrap">More Info</span>
               </button>
-
             </div>
           </div>
         </div>
