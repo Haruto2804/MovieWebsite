@@ -13,42 +13,47 @@ const MovieSection = ({ title, movieList }) => {
       <h2 className="text-xl font-bold text-white mb-4">{title}</h2>
       <Swiper
         modules={[Navigation, FreeMode, Mousewheel, Keyboard, Autoplay]}
-        autoplay={ {delay: 5000}}
+        autoplay={{ delay: 5000 }}
         freeMode={true}
         navigation={true}
         keyboard={true}
         mousewheel={{ forceToAxis: true }}
-        pagination={{ clickable: true }}
-        spaceBetween={13}       // Khoảng cách giữa các phim là 20px
-        slidesPerView={2}       // Điện thoại hiện 2 phim
+        grabCursor={true}
+
+        // 1. CÀI ĐẶT MẶC ĐỊNH (Cho điện thoại cực nhỏ < 480px)
+        slidesPerView={2.2}      // Hiện 2 phim và một chút phim thứ 3 để tạo hiệu ứng vuốt
+        spaceBetween={12}       // Khoảng cách nhỏ để tiết kiệm không gian màn hình điện thoại
+
         breakpoints={{
-          // 2. TABLET (Màn hình từ 640px trở lên)
+          // 2. ĐIỆN THOẠI LỚN (iPhone Pro Max, Android màn to - từ 480px)
+          480: {
+            slidesPerView: 2.5,
+            spaceBetween: 15,
+          },
+          // 3. TABLET (iPad, máy tính bảng - từ 640px)
           640: {
-            slidesPerView: 3,
+            slidesPerView: 3.2,
             spaceBetween: 20,
           },
-          // 3. LAPTOP NHỎ (Màn hình từ 768px trở lên)
+          // 4. LAPTOP / MÀN HÌNH NHỎ (từ 768px)
           768: {
-            slidesPerView: 3,
-            spaceBetween: 2,
+            slidesPerView: 4,
+            spaceBetween: 25,     // Bắt đầu giãn cách rộng hơn
           },
-          // 4. DESKTOP TIÊU CHUẨN (Màn hình từ 1024px trở lên)
+          // 5. DESKTOP TIÊU CHUẨN (từ 1024px)
           1024: {
             slidesPerView: 5,
-            spaceBetween: 30,
+            spaceBetween: 30,     // Khoảng cách 30px giúp nhìn rất thoáng
           },
-          // 5. MÀN HÌNH LỚN / TV (Màn hình từ 1280px trở lên)
+          // 6. MÀN HÌNH LỚN / TV (từ 1280px trở lên)
           1280: {
             slidesPerView: 6,
-            spaceBetween: 40, // Khoảng cách rộng 40px như bạn muốn
+            spaceBetween: 35,     // Giãn cách rộng nhất để tận dụng màn hình to
           },
         }}
-        grabCursor={true}
       >
-        {/* BƯỚC QUAN TRỌNG: Duyệt qua mảng movieList */}
         {movieList && movieList.map((item) => (
-          <SwiperSlide key={item.imdbID}>
-            {/* Mỗi bộ phim sẽ nằm gọn trong 1 SwiperSlide */}
+          <SwiperSlide key={item.id}>
             <MovieCard movie={item} />
           </SwiperSlide>
         ))}
