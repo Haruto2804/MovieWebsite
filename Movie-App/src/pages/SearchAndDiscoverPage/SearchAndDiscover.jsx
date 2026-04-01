@@ -20,12 +20,12 @@ const SearchAndDiscover = () => {
       </div>
 
       <p className="text-5xl font-bold">Tìm kiếm & khám phá</p>
-      
+
       <SearchInput
         query={query}
         setQuery={setQuery}
         value={query}
-        placeholder="Search for Movies by title..." 
+        placeholder="Search for Movies by title..."
       />
 
       <FilterSection setFilter={setFilter} />
@@ -36,7 +36,7 @@ const SearchAndDiscover = () => {
         </p>
       )}
 
-      <div className="max-md:mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+      <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-x-3 gap-y-6 px-2 md:px-0">
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20 col-span-full gap-4">
             <Loader2 className="size-10 text-cine-red animate-spin" />

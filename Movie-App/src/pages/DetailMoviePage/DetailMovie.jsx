@@ -188,14 +188,14 @@ const DetailMovie = () => {
 
 
       {/* Cast Section */}
-      <div className="px-10">
+      <div className="">
         <CastSection castList={credits.slice(0, 10)} />
       </div>
-      <div className="px-10">
+      <div className="">
         <ProductionSection companies={currentMovie?.production_companies} />
       </div>
       {/* Similar Movies */}
-      <div className="px-10">
+      <div className="">
         <MovieSection title="More Like This" movieList={similar} />
       </div>
 
