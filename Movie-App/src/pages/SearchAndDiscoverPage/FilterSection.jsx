@@ -20,13 +20,13 @@ const FilterSection = ({ setFilter }) => {
   // }, [genres]);
   return (
     <div className="w-full">
-      <p className="text-xl font-bold">Filter</p>
+      <p className="text-xl font-bold">Bộ lọc</p>
       <div className="flex max-md:flex-col gap-4">
         <Filter
           key="1"
           setFilter={setFilter}
           options={movieYear}
-          title="Year"
+          title="Năm phát hành"
           type="year"
         />
 
