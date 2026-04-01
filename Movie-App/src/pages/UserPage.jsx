@@ -82,30 +82,30 @@ const UserPage = (() => {
           key="1"
           icon={<FaRegHeart />}
           value={favorites.count}
-          title="Favorite"
+          title="Yêu thích"
           colorClass="text-red-500"
         />
         <UserStatCard
           key="2"
           icon={<LuHistory />}
           value={watchList.count}
-          title="Watch List"
+          title="Danh sách xem sau"
           colorClass="text-purple-500"
         />
         <UserStatCard
           key="2"
           icon={<MdLocalMovies />}
           value={watchList.count + favorites.count}
-          title="Total Movies"
+          title="Tổng phim"
           colorClass="text-cine-red"
         />
       </div>
       <MovieSection
-        title="Favorite Movie"
+        title="Phim yêu thích"
         movieList={favorites.results.toReversed()}
       />
       <MovieSection
-        title="Watch List "
+        title="Phim xem sau"
         movieList={watchList.results.toReversed()}
       />
     </div>

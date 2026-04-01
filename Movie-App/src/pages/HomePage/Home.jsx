@@ -12,10 +12,10 @@ import movieApi from "../../api/movie-api";
 import { useNavigate } from "react-router-dom";
 const formatTitle = (key) => {
   const titles = {
-    playing: "Playing",
-    popular: "Popular",
-    topRated: "Top rated",
-    upcoming: "Upcoming"
+    playing: "Đang chiếu",
+    popular: "Phổ biến",
+    topRated: "Đánh giá cao",
+    upcoming: "Sắp chiếu"
   };
   return titles[key] || key;
 };
@@ -23,6 +23,7 @@ const Home = () => {
   const { homeMovies, featuredMovie } = useContext(MovieContext);
   const [isOpen, setIsOpen] = useState(false);
   const [trailerVideos, setTrailerVideos] = useState([]);
+  const [isExpanded, setIsExpanded] = useState(false); // State mới cho "Xem thêm"
   const navigate = useNavigate();
   const handlePlayButton = async () => {
     if (!featuredMovie?.id) return;
@@ -86,9 +87,20 @@ const Home = () => {
             </div>
 
             {/* Overview: Dùng line-clamp để không bị quá dài làm nát layout */}
-            <p className="text-slate-300 text-lg leading-relaxed line-clamp-3">
-              {featuredMovie?.overview}
-            </p>
+            <div className="flex flex-col gap-2">
+              <p className={`text-slate-300 text-lg leading-relaxed italic transition-all duration-300 ${!isExpanded ? "line-clamp-3" : ""}`}>
+                {featuredMovie?.overview}
+              </p>
+
+              {featuredMovie?.overview?.length > 200 && (
+                <button
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  className="text-cine-red font-bold text-sm uppercase hover:underline w-fit cursor-pointer"
+                >
+                  {isExpanded ? "Rút gọn" : "Xem thêm"}
+                </button>
+              )}
+            </div>
 
             <div className="flex gap-3 items-center mt-2">
               <button
@@ -100,15 +112,15 @@ const Home = () => {
                 <span className="text-black text-md font-bold group-hover:text-white">Play Now</span>
               </button>
 
-              
-                <button 
-                onClick={()=> navigate(`/movie/${featuredMovie.id}`)}
+
+              <button
+                onClick={() => navigate(`/movie/${featuredMovie.id}`)}
                 className="flex gap-3 items-center bg-zinc-600/80 backdrop-blur-md rounded-lg px-8 py-3 
                   cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-500
                   group active:scale-95 text-white">
-                  <IoInformationCircleOutline className="size-6" />
-                  <span className="text-md font-bold">More Info</span>
-                </button>
+                <IoInformationCircleOutline className="size-6" />
+                <span className="text-md font-bold">More Info</span>
+              </button>
 
             </div>
           </div>

@@ -12,10 +12,10 @@ import { AuthContext } from "../contexts/authContext";
 import LogoutButton from '../components/common/LogoutButton'
 const navigation = [
   {
-    value: 'Home', path: '/'
+    value: 'Trang chủ', path: '/'
   },
   {
-    value: 'Search & Discover', path: '/search_discover'
+    value: 'Tìm kiếm và khám phá', path: '/search_discover'
   }
 ]
 const Header = () => {
@@ -49,8 +49,8 @@ const Header = () => {
 
         {/* Menu chính trên Desktop */}
         <ul className="text-gray-400 gap-6 md:flex hidden font-medium">
-          <Link to="/" className="hover:text-white transition-all duration-300">Home</Link>
-          <Link to="/search_discover" className="hover:text-white transition-all duration-300">Search & Discover</Link>
+          <Link to="/" className="hover:text-white transition-all duration-300">Trang chủ</Link>
+          <Link to="/search_discover" className="hover:text-white transition-all duration-300">Tìm kiếm & khám phá</Link>
         </ul>
 
 
@@ -94,6 +94,7 @@ const Header = () => {
         <nav className="p-4 flex flex-col gap-2">
           {navigation.map((item) => (
             <Link
+              key = {item.value}
               to={item.path}
               onClick={closeSidebar}
               className="flex items-center gap-4 px-4 py-3 text-gray-300 hover:bg-white/5 hover:text-white rounded-xl transition-all"

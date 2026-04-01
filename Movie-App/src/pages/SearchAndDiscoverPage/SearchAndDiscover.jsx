@@ -19,7 +19,7 @@ const SearchAndDiscover = () => {
         <BackButton />
       </div>
 
-      <p className="text-5xl font-bold">Search & Discover</p>
+      <p className="text-5xl font-bold">Tìm kiếm & khám phá</p>
       
       <SearchInput
         query={query}

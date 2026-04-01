@@ -34,7 +34,7 @@ const DetailMovie = () => {
   // so luong video hien thi cho trailer video
   const [visibleTrailerVideos, setVisibleTrailerVideos] = useState(4);
 
-
+  const [isExpanded, setIsExpanded] = useState(false);
   // quan ly trang thai modal trailer phim
   const [isOpen, setIsOpen] = useState(false);
 
@@ -44,7 +44,7 @@ const DetailMovie = () => {
     }
     return videos.filter((item) => item.type === 'Trailer')
   }, [videos])
-  
+
   useEffect(() => {
     const fetchAllInfoCurrentMovie = async () => {
       setLoading(true); // BẬT LOADING
@@ -142,9 +142,21 @@ const DetailMovie = () => {
             ))}
           </div>
 
-          <p className="text-slate-300 text-lg leading-relaxed line-clamp-4 italic">
-            {currentMovie.overview}
-          </p>
+
+          <div className="flex flex-col gap-2">
+            <p className={`text-slate-300 text-lg leading-relaxed italic transition-all duration-300 ${!isExpanded ? "line-clamp-3" : ""}`}>
+              {currentMovie.overview}
+            </p>
+
+            {currentMovie.overview?.length > 200 && (
+              <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="text-cine-red font-bold text-sm uppercase hover:underline w-fit cursor-pointer"
+              >
+                {isExpanded ? "Rút gọn" : "Xem thêm"}
+              </button>
+            )}
+          </div>
 
           <div className="flex gap-4 items-center mt-4 flex-wrap">
             <button className="flex gap-3 items-center bg-white rounded-lg px-8 py-3 cursor-pointer transition-all hover:bg-cine-red group active:scale-95 shadow-xl">
@@ -155,7 +167,7 @@ const DetailMovie = () => {
             </button>
             <FavoriteButton movie={currentMovie} />
             <ShareButton />
-            <WatchlistButton/>
+            <WatchlistButton />
           </div>
         </div>
       </div>
@@ -188,10 +200,10 @@ const DetailMovie = () => {
       </div>
 
       {trailerVideo && trailerVideo.length > 0 && (
-        <TrailerModal 
-        videoId={trailerVideo[0].key} 
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
+        <TrailerModal
+          videoId={trailerVideo[0].key}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
         />
       )}
     </div>
