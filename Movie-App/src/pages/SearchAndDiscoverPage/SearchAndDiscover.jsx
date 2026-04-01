@@ -16,7 +16,7 @@ const SearchAndDiscover = () => {
   return (
     // Thêm max-w-[1400px] để tránh nội dung quá rộng trên màn hình UltraWide
     <div className="p-3 sm:p-5 md:p-8 mt-3 flex flex-col gap-6 md:gap-10 text-white max-w-[1400px] mx-auto w-full">
-      
+
       {/* Container header chính */}
       <div className="w-full flex flex-col gap-8 md:gap-12">
 
@@ -73,10 +73,14 @@ const SearchAndDiscover = () => {
               </div>
             </div>
 
-            {/* Filter Section - Chiếm 12 cột trên mobile, 7 cột trên desktop */}
-            <div className="lg:col-span-7 flex flex-col gap-2 md:gap-3 justify-center">
-              <label className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-500 ml-1">Bộ lọc thông minh</label>
-              <div className="bg-white/5 p-3 md:p-4 rounded-xl md:rounded-2xl border border-white/5 hover:border-white/10 transition-colors">
+            {/* Filter Section - lg:col-span-7 */}
+            <div className="lg:col-span-7 flex flex-col gap-2 justify-center w-full min-w-0">
+              <label className="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-500 ml-1">
+                Bộ lọc thông minh
+              </label>
+
+              {/* p-2.5 cho mobile cực nhỏ, p-4 cho màn hình lớn */}
+              <div className="bg-white/5 p-2.5 sm:p-4 rounded-xl md:rounded-2xl border border-white/5 hover:border-white/10 transition-colors w-full overflow-hidden">
                 <FilterSection setFilter={setFilter} />
               </div>
             </div>
@@ -121,7 +125,7 @@ const SearchAndDiscover = () => {
           </div>
         ) : (
           <div className="col-span-full py-20 text-center text-zinc-600 italic">
-             Nhập tên phim để bắt đầu khám phá! 🍿
+            Nhập tên phim để bắt đầu khám phá! 🍿
           </div>
         )}
       </div>
@@ -129,13 +133,13 @@ const SearchAndDiscover = () => {
       {/* --- 6. Pagination --- */}
       {totalResults > 0 && (
         <div className="py-10 border-t border-white/5">
-            <Pagination
-              loading={loading}
-              page={currentPage}
-              setPage={setCurrentPage}
-              totalResults={totalResults}
-              totalPages={totalPages}
-            />
+          <Pagination
+            loading={loading}
+            page={currentPage}
+            setPage={setCurrentPage}
+            totalResults={totalResults}
+            totalPages={totalPages}
+          />
         </div>
       )}
     </div>
