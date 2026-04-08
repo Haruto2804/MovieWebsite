@@ -198,12 +198,6 @@ Trang chi tiết cung cấp cái nhìn toàn diện về tác phẩm điện ả
 
 -----
 
-Để phần "Lý do chọn đề tài" (Rationale) trở nên thuyết phục, bạn nên kết hợp giữa **nhu cầu thị trường**, **sở thích cá nhân** và **mục tiêu học thuật**. Dưới đây là nội dung bạn có thể đưa vào báo cáo cho dự án **CineStream**:
-
----
-
-Chào Bảo, mình đã tổng hợp và tinh gọn lại toàn bộ nội dung của bạn thành một cấu trúc logic, chuyên nghiệp và "đắt" nhất để đưa vào báo cáo. Bản này tập trung vào sự chủ động, kỹ năng công nghệ hiện đại và tư duy giải quyết vấn đề của bạn.
-
 ---
 
 ## 🎯 6. Lý do chọn đề tài (Project Rationale)
