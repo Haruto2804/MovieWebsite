@@ -78,7 +78,6 @@ export const MovieProvider = ({ children }) => {
     const fetchMovies = async () => {
       setLoading(true);
       if (!query) {
-        'test'
         setResults(homeMovies.topRated);
         setLoading(false);
         return;
