@@ -42,7 +42,6 @@ Loại bỏ hoàn toàn cảm giác chờ đợi bằng kỹ thuật **Skeleton 
 ## 🛠️ Tech Stack & Architecture
 
 ### Core Technologies
-Dựa trên hình ảnh kiến trúc dự án bạn cung cấp và nội dung file `package.json`, mình sẽ viết lại phần **Dependencies** một cách chuyên nghiệp, phân loại rõ ràng theo mục đích sử dụng để bạn dễ dàng đưa vào tài liệu (README) hoặc báo cáo đồ án của mình nhé.
 
 ---
 
