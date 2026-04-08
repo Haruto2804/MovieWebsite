@@ -118,37 +118,79 @@ src/
 
 ## 📸 Interface Showcase
 
-### 🏠 1. Home Page (Hero & Categorization)
+### 🏠 1. Giao diện Trang chủ (Home Page)
 
-Hệ thống Banner động và danh sách phim được phân loại thông minh (Now Playing, Trending, Top Rated, Upcoming).
+Giao diện trang chủ được thiết kế hiện đại, tối ưu trải nghiệm người dùng.
 
+**🎬 Banner Phim Nổi Bật (Hero Section):**
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/573eb322-4a1d-442d-b1da-a599fb370cb0" width="45%" alt="Home Banner">
-  <img src="https://github.com/user-attachments/assets/b9f06788-bee2-4f18-aadf-04d6d07b5914" width="45%" alt="Now Playing">
+  <img src="https://github.com/user-attachments/assets/573eb322-4a1d-442d-b1da-a599fb370cb0" width="90%" alt="Home Banner">
+</p>
+
+**🎞️ Đang chiếu (Now Playing):**
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b9f06788-bee2-4f18-aadf-04d6d07b5914" width="90%" alt="Now Playing">
+</p>
+
+**🔥 Phổ biến (Trending/Popular):**
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/d630b138-3aac-47b9-acc1-c8d693d91cdd" width="90%" alt="Trending">
+</p>
+
+**⭐ Được yêu thích nhất (Top Rated):**
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/ba9214ec-bc71-42d4-af08-f5675174c8b2" width="90%" alt="Top Rated">
+</p>
+
+**🎬 Phim sắp chiếu (Upcoming):**
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/248eb207-a892-42dc-afde-a59b6ec074a4" width="90%" alt="Upcoming">
 </p>
 
 ---
 
-### 🎥 2. Movie Detail (Deep Insights)
+### 🎥 2. Giao diện Trang chi tiết phim (Detail Movie Page)
 
-Cung cấp cái nhìn toàn diện từ thông tin phim, dàn diễn viên (Cast), nhà sản xuất cho đến Trailer tích hợp.
+Trang chi tiết cung cấp cái nhìn toàn diện về tác phẩm điện ảnh.
 
+**🖼️ Thông tin tổng quan:**
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/3c54b4c2-856d-4887-9755-c7ad7ca6ac0c" width="45%" alt="Movie Info">
-  <img src="https://github.com/user-attachments/assets/29140788-72bd-4a23-a20d-34fc3c85a02c" width="45%" alt="Cast">
+  <img src="https://github.com/user-attachments/assets/3c54b4c2-856d-4887-9755-c7ad7ca6ac0c" width="90%" alt="Movie Info">
+</p>
+
+**👥 Dàn diễn viên (Cast & Crew):**
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/29140788-72bd-4a23-a20d-34fc3c85a02c" width="90%" alt="Cast">
+</p>
+
+**🏭 Nhà sản xuất:**
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/4551cd50-acd6-480c-a4b1-37da2f93e86d" width="90%" alt="Production">
+</p>
+
+**🎬 Trailer:**
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/53a90b1e-b35f-495a-8d13-7c3dee79f9cb" width="90%" alt="Trailer">
+</p>
+
+**🎞️ Similar Movies:**
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/315e5369-5a0c-4a80-b8f7-90aa5e43e11b" width="90%" alt="Similar Movies">
 </p>
 
 ---
 
-### 🔍 3. Intelligent Search
+### 🔍 3. Giao diện Tìm kiếm thông minh (CineSearch Page)
 
-Trải nghiệm tìm kiếm tức thì kết hợp với bộ lọc hiển thị trực quan.
-
+**🛠️ Search Tool:**
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/a1336de2-e036-4008-bd7d-a69cdf8dc6e7" width="45%" alt="Search Tool">
-  <img src="https://github.com/user-attachments/assets/aa0e6ccc-22b1-453b-ae81-e6c9b4d5e8a3" width="45%" alt="Search Results">
+  <img src="https://github.com/user-attachments/assets/a1336de2-e036-4008-bd7d-a69cdf8dc6e7" width="90%" alt="Search Tool">
 </p>
 
+**📊 Search Results:**
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/aa0e6ccc-22b1-453b-ae81-e6c9b4d5e8a3" width="90%" alt="Search Results">
+</p>
 
 -----
 
