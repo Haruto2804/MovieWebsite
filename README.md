@@ -33,6 +33,10 @@ Loại bỏ hoàn toàn cảm giác chờ đợi bằng kỹ thuật **Skeleton 
   * Sử dụng tư duy **Mobile-First** với Tailwind CSS để đảm bảo tính nhất quán trên mọi thiết bị (Smartphone, Tablet, Desktop).
   * Các Component được thiết kế theo hướng **Reusable** (có khả năng tái sử dụng cao), dễ dàng bảo trì và mở rộng.
 
+### 📱 3. Scalable Architectur
+
+  * Dự án được tổ chức theo mô hình Modular & Layered Architecture (Kiến trúc phân lớp), giúp tách biệt hoàn toàn giữa Logic nghiệp vụ, Dữ liệu và Giao diện người  dùng. Cách tiếp cận này đảm bảo hệ thống luôn sẵn sàng cho việc mở rộng quy mô mà không gây ảnh hưởng đến các phần hiện có.
+
 -----
 
 ## 🛠️ Tech Stack & Architecture
@@ -194,6 +198,44 @@ Trang chi tiết cung cấp cái nhìn toàn diện về tác phẩm điện ả
 
 -----
 
+Để phần "Lý do chọn đề tài" (Rationale) trở nên thuyết phục, bạn nên kết hợp giữa **nhu cầu thị trường**, **sở thích cá nhân** và **mục tiêu học thuật**. Dưới đây là nội dung bạn có thể đưa vào báo cáo cho dự án **CineStream**:
+
+---
+
+Chào Bảo, mình đã tổng hợp và tinh gọn lại toàn bộ nội dung của bạn thành một cấu trúc logic, chuyên nghiệp và "đắt" nhất để đưa vào báo cáo. Bản này tập trung vào sự chủ động, kỹ năng công nghệ hiện đại và tư duy giải quyết vấn đề của bạn.
+
+---
+
+## 🎯 6. Lý do chọn đề tài (Project Rationale)
+
+Việc thực hiện dự án **CineStream** không chỉ đơn thuần là xây dựng một website xem phim, mà là hành trình thử thách giới hạn cá nhân và chứng minh năng lực thích nghi trong môi trường công nghệ thay đổi không ngừng.
+
+### 🚀 Tầm nhìn sản phẩm & Nhu cầu thực tế
+Trong kỷ nguyên số, người dùng cần một nền tảng giải trí tập trung, trực quan và tốc độ cao. Dự án ra đời nhằm giải quyết bài toán trải nghiệm người dùng (UX) trong việc khám phá thế giới điện ảnh, từ đó kết hợp giữa đam mê cá nhân với các giải pháp kỹ thuật thực tế.
+
+### 💻 Thách thức kỹ thuật & Tư duy "Sẵn sàng cho công việc"
+Dự án là cơ hội để tôi cọ xát với những tiêu chuẩn công nghiệp hiện đại:
+* **Thực thi kiến trúc Scalable (Clean Architecture):** Thay vì viết code rời rạc, dự án được tổ chức theo mô hình phân lớp (Services, Hooks, Contexts). Điều này giúp tách biệt logic nghiệp vụ khỏi giao diện, đảm bảo hệ thống dễ dàng bảo trì và mở rộng khi quy mô tăng lên.
+* **Xử lý dữ liệu thực tế:** Tích hợp **TMDB API v3** buộc tôi phải xử lý các vấn đề thực chiến như quản lý bất đồng bộ (Async/Await), phân trang dữ liệu lớn và tối ưu hóa hiệu năng tải hình ảnh.
+* **Làm chủ công nghệ mới:** Việc lựa chọn **React 19** và **Tailwind CSS 4** – những phiên bản mới nhất – chứng minh khả năng tự cập nhật xu hướng và không ngại thay đổi của bản thân.
+
+### 🧠 Kỹ năng tự học & Chinh phục rào cản tài liệu
+Đây là phần quan trọng nhất chứng minh năng lực cốt lõi của một lập trình viên:
+* **Đọc hiểu tài liệu Tiếng Anh:** Toàn bộ quá trình nghiên cứu API và Document của các thư viện bên thứ ba được thực hiện bằng tiếng Anh. Điều này giúp tôi nâng cao kỹ năng đọc hiểu chuyên ngành và khả năng tiếp cận trực tiếp với các nguồn tài liệu gốc chuẩn quốc tế.
+* **Khai thác sức mạnh AI (AI-Assisted Learning):** Tôi đã áp dụng kỹ năng **Prompt Engineering** để sử dụng AI (Gemini/ChatGPT) như một người cố vấn. AI hỗ trợ giải mã các khái niệm khó, phản biện code và gợi ý các phương án tối ưu, giúp tôi biến những điều "chưa hiểu" thành kiến thức chuyên môn của mình một cách nhanh chóng và sâu sắc.
+
+### 🎨 Sự kết hợp giữa Đam mê & Chuyên nghiệp
+Dự án là nơi giao thoa giữa sở thích cá nhân (Điện ảnh & Anime) và tư duy lập trình hệ thống. Điều này tạo động lực để tôi trau chuốt từng chi tiết nhỏ nhất trong UI/UX, đảm bảo sản phẩm đạt độ hoàn thiện cao nhất trên mọi thiết bị.
+
+---
+
+> **Lời kết:** Qua **CineStream**, tôi muốn khẳng định: Dù công nghệ có mới hay tài liệu có khó, với sự hỗ trợ của **AI**, khả năng **đọc hiểu tài liệu tiếng Anh** và tinh thần **chủ động**, tôi hoàn toàn có thể làm chủ và xây dựng nên những sản phẩm chất lượng, sẵn sàng hòa nhập vào môi trường làm việc chuyên nghiệp.
+
+---
+---
+
+
+
 ## 🤝 Connect with Me
 
   * **Lead Developer:** Ngô Lưu Gia Bảo (Haruto)
@@ -205,6 +247,4 @@ Trang chi tiết cung cấp cái nhìn toàn diện về tác phẩm điện ả
 *Developed with Passion & Clean Code.*
 
 -----
-5.  **Clean Architecture:** Thêm phần mô tả thư mục để chứng minh bạn có tư duy tổ chức code tốt.
 
-Bảo thấy bản này "xịn" hơn chưa? Cần tinh chỉnh chỗ nào cứ bảo mình nhé\!
