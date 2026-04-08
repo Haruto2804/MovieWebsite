@@ -1,6 +1,10 @@
+
 import { FaPlay, FaHeart } from "react-icons/fa";
 import { RiMovie2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { MovieContext } from "../../contexts/movieContext";
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import MovieCardSkeleton from "../skeletons/MovieCardSkeleton";
 
 const MovieCard = ({ movie }) => {
   const posterUrl = movie.poster_path
@@ -9,9 +13,10 @@ const MovieCard = ({ movie }) => {
 
   const releaseYear = movie.release_date?.split("-")[0] || "N/A";
 
+  
   return (
     <Link to={`/movie/${movie.id}`} className="block w-full">
-      <div className="overflow-hidden cursor-pointer relative aspect-[2/3] w-full rounded-md group bg-zinc-900 shadow-md">
+      <div className="overflow-hidden cursor-pointer relative aspect-2/3 w-full rounded-md group bg-zinc-900 shadow-md">
 
         <img
           src={posterUrl}

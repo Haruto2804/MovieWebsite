@@ -6,6 +6,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/effect-fade'; // Cái này quan trọng nhất!
 const MovieSection = ({ title, movieList }) => {
   const sectionId = title?.replace(/\s+/g, '') || "default";
+
+  
   return (
     <div
       section={sectionId}>

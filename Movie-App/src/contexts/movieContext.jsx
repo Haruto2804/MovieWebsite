@@ -34,6 +34,7 @@ export const MovieProvider = ({ children }) => {
 
   useEffect(() => {
     const loadInitialData = async () => {
+      setLoading(true)
       try {
         console.log('Đang load dữ liệu trang chủ...');
         const [playingRes, upcomingRes, topRatedRes, popularRes] = await Promise.all([
@@ -57,9 +58,11 @@ export const MovieProvider = ({ children }) => {
           const random = topRatedMovie[Math.floor(Math.random() * topRatedMovie.length)];
           setFeaturedMovie(random);
         }
+        setLoading(false);
       } catch (err) {
         console.error("Lỗi load trang chủ:", err);
         setHomeMovies(prev => ({ ...prev, isLoading: false }));
+        setLoading(false);
       }
     };
     loadInitialData();

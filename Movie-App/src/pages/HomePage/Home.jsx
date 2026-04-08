@@ -2,14 +2,14 @@ import Label from "../../components/common/Label";
 import { MdOutlineStar } from "react-icons/md";
 import { FaPlay } from "react-icons/fa";
 import { IoInformationCircleOutline } from "react-icons/io5";
-import FavoriteButton from "../../components/common/FavoriteButton";
 import MovieSection from "./MovieSection";
 import { useContext, useState } from "react";
-import { AuthContext } from "../../contexts/authContext";
 import { MovieContext } from "../../contexts/movieContext";
 import TrailerModal from '../DetailMoviePage/TrailerModal'
 import movieApi from "../../api/movie-api";
 import { useNavigate } from "react-router-dom";
+import MovieCardSkeleton from "../../components/skeletons/MovieCardSkeleton";
+
 const formatTitle = (key) => {
   const titles = {
     playing: "Đang chiếu",
@@ -45,6 +45,7 @@ const Home = () => {
   return (
     <>
       <div className="flex flex-col gap-10 w-full p-2">
+
         {isOpen && (
           <TrailerModal
             isOpen={isOpen}
@@ -133,8 +134,14 @@ const Home = () => {
             </div>
           </div>
         </div>
+
         {homeMovies.isLoading ? (
-          <div className="text-white">Đang tải phim ....</div>
+          <div className="flex gap-4 overflow-hidden">
+            {/* Render 6 cái card giả */}
+            {[...Array(6)].map((_, index) => (
+              <MovieCardSkeleton key={index} />
+            ))}
+          </div>
         ) : (
           Object.keys(homeMovies)
             .filter((key) => key !== "isLoading") // Loại bỏ key isLoading để không render nhầm
