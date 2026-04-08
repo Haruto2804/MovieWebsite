@@ -39,10 +39,6 @@ Loại bỏ hoàn toàn cảm giác chờ đợi bằng kỹ thuật **Skeleton 
 
 -----
 
-## 🛠️ Tech Stack & Architecture
-
-### Core Technologies
-
 ---
 
 ## 🛠 Tech Stack & Dependencies
