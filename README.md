@@ -38,12 +38,42 @@ Loại bỏ hoàn toàn cảm giác chờ đợi bằng kỹ thuật **Skeleton 
 ## 🛠️ Tech Stack & Architecture
 
 ### Core Technologies
+Dựa trên hình ảnh kiến trúc dự án bạn cung cấp và nội dung file `package.json`, mình sẽ viết lại phần **Dependencies** một cách chuyên nghiệp, phân loại rõ ràng theo mục đích sử dụng để bạn dễ dàng đưa vào tài liệu (README) hoặc báo cáo đồ án của mình nhé.
 
-  * **Core:** `React.js (v18+)` - Tận dụng tối đa Hooks & Functional Components.
-  * **Styling:** `Tailwind CSS` - Design system linh hoạt, tối ưu CSS bundle size.
-  * **State Management:** `React Context API` - Quản lý Global State (Theme, Authentication, User Preferences) một cách gọn nhẹ.
-  * **Routing:** `React Router DOM v6` - Giải pháp Client-side routing mạnh mẽ.
-  * **Data Fetching:** Tích hợp trực tiếp với `TMDB v3 API` thông qua lớp Service riêng biệt.
+---
+
+## 🛠 Tech Stack & Dependencies
+
+Dưới đây là chi tiết các thư viện được sử dụng trong dự án **CineStream**, đảm bảo tính hiện đại và tối ưu hiệu suất:
+
+### 1. Core Technologies (Công nghệ cốt lõi)
+* **React.js (v19):** Phiên bản mới nhất, tận dụng tối đa Functional Components và Hooks để xây dựng giao diện người dùng linh hoạt.
+* **Vite (v6):** Build tool thế hệ mới giúp tăng tốc độ phát triển và tối ưu hóa bundle khi deploy.
+
+### 2. Styling & UI (Giao diện)
+* **Tailwind CSS (v4):** Framework Utility-first giúp thiết kế UI nhanh chóng, linh hoạt và tối ưu kích thước CSS.
+* **Lucide React & React Icons:** Bộ sưu tập icon đa dạng, nhẹ và dễ tùy chỉnh cho các nút bấm, menu.
+* **Swiper.js:** Thư viện mạnh mẽ để tạo các Slider/Carousel mượt mà cho danh sách phim nổi bật.
+
+### 3. Routing & State Management (Điều hướng & Trạng thái)
+* **React Router DOM (v7):** Giải pháp Client-side routing mạnh mẽ, hỗ trợ điều hướng trang mượt mà không cần tải lại trình duyệt.
+* **React Context API:** Quản lý Global State tập trung cho các tính năng như Theme (Sáng/Tối), Trạng thái đăng nhập (Authentication) và Tùy chọn người dùng.
+
+### 4. Data Fetching (Xử lý dữ liệu)
+* **Axios:** Thư viện HTTP Client giúp gọi API từ **TMDB v3** một cách ổn định, hỗ trợ cấu hình interceptors và xử lý lỗi chuyên nghiệp.
+* **TMDB API Service:** Lớp dịch vụ riêng biệt được tách rời để quản lý toàn bộ logic lấy dữ liệu phim, giúp code sạch và dễ bảo trì.
+
+---
+
+### 📋 Bảng tổng hợp phiên bản
+| Thư viện | Phiên bản | Mục đích |
+| :--- | :--- | :--- |
+| `react` | `^19.2.4` | Thư viện UI chính |
+| `react-router-dom` | `^7.13.1` | Điều hướng trang |
+| `tailwindcss` | `^4.2.2` | Framework giao diện |
+| `axios` | `^1.13.6` | Gọi API |
+| `swiper` | `^12.1.2` | Slider phim |
+| `lucide-react` | `^0.577.0` | Hệ thống Icon |
 
 ### Directory Structure (Clean Architecture)
 
