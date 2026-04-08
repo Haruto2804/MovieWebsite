@@ -91,23 +91,23 @@ Giao diện trang chủ được thiết kế hiện đại, tối ưu trải ng
 
   * **Banner Phim Nổi Bật (Hero Section):**
 
-\<img src="[https://github.com/user-attachments/assets/573eb322-4a1d-442d-b1da-a599fb370cb0](https://github.com/user-attachments/assets/573eb322-4a1d-442d-b1da-a599fb370cb0)" width="100%" alt="Home Banner"\>
+<img src="[https://github.com/user-attachments/assets/573eb322-4a1d-442d-b1da-a599fb370cb0](https://github.com/user-attachments/assets/573eb322-4a1d-442d-b1da-a599fb370cb0)" width="100%" alt="Home Banner"\>
 
   * **Đang chiếu (Now Playing):**
 
-\<img src="[https://github.com/user-attachments/assets/b9f06788-bee2-4f18-aadf-04d6d07b5914](https://github.com/user-attachments/assets/b9f06788-bee2-4f18-aadf-04d6d07b5914)" width="100%" alt="Now Playing"\>
+<img src="[https://github.com/user-attachments/assets/b9f06788-bee2-4f18-aadf-04d6d07b5914](https://github.com/user-attachments/assets/b9f06788-bee2-4f18-aadf-04d6d07b5914)" width="100%" alt="Now Playing"\>
 
   * **Phổ biến (Trending/Popular):**
 
-\<img src="[https://github.com/user-attachments/assets/d630b138-3aac-47b9-acc1-c8d693d91cdd](https://github.com/user-attachments/assets/d630b138-3aac-47b9-acc1-c8d693d91cdd)" width="100%" alt="Trending"\>
+<img src="[https://github.com/user-attachments/assets/d630b138-3aac-47b9-acc1-c8d693d91cdd](https://github.com/user-attachments/assets/d630b138-3aac-47b9-acc1-c8d693d91cdd)" width="100%" alt="Trending"\>
 
   * **Được yêu thích nhất (Top Rated):**
 
-\<img src="[https://github.com/user-attachments/assets/ba9214ec-bc71-42d4-af08-f5675174c8b2](https://github.com/user-attachments/assets/ba9214ec-bc71-42d4-af08-f5675174c8b2)" width="100%" alt="Top Rated"\>
+<img src="[https://github.com/user-attachments/assets/ba9214ec-bc71-42d4-af08-f5675174c8b2](https://github.com/user-attachments/assets/ba9214ec-bc71-42d4-af08-f5675174c8b2)" width="100%" alt="Top Rated"\>
 
   * **Phim sắp chiếu (Upcoming):**
 
-\<img src="[https://github.com/user-attachments/assets/248eb207-a892-42dc-afde-a59b6ec074a4](https://github.com/user-attachments/assets/248eb207-a892-42dc-afde-a59b6ec074a4)" width="100%" alt="Upcoming"\>
+<img src="[https://github.com/user-attachments/assets/248eb207-a892-42dc-afde-a59b6ec074a4](https://github.com/user-attachments/assets/248eb207-a892-42dc-afde-a59b6ec074a4)" width="100%" alt="Upcoming"\>
 
 -----
 
@@ -117,21 +117,21 @@ Trang chi tiết cung cấp cái nhìn toàn diện về tác phẩm điện ả
 
   * **Phông nền & Thông tin tổng quan:**
 
-\<img src="[https://github.com/user-attachments/assets/3c54b4c2-856d-4887-9755-c7ad7ca6ac0c](https://github.com/user-attachments/assets/3c54b4c2-856d-4887-9755-c7ad7ca6ac0c)" width="100%" alt="Movie Info"\>
+<img src="[https://github.com/user-attachments/assets/3c54b4c2-856d-4887-9755-c7ad7ca6ac0c](https://github.com/user-attachments/assets/3c54b4c2-856d-4887-9755-c7ad7ca6ac0c)" width="100%" alt="Movie Info"\>
 
   * **Dàn diễn viên (Cast & Crew):**
 
-\<img src="[https://github.com/user-attachments/assets/29140788-72bd-4a23-a20d-34fc3c85a02c](https://github.com/user-attachments/assets/29140788-72bd-4a23-a20d-34fc3c85a02c)" width="100%" alt="Cast"\>
+<img src="[https://github.com/user-attachments/assets/29140788-72bd-4a23-a20d-34fc3c85a02c](https://github.com/user-attachments/assets/29140788-72bd-4a23-a20d-34fc3c85a02c)" width="100%" alt="Cast"\>
 
   * **Nhà sản xuất & Trailer:**
 
-\<img src="[https://github.com/user-attachments/assets/4551cd50-acd6-480c-a4b1-37da2f93e86d](https://github.com/user-attachments/assets/4551cd50-acd6-480c-a4b1-37da2f93e86d)" width="100%" alt="Production"\>
+<img src="[https://github.com/user-attachments/assets/4551cd50-acd6-480c-a4b1-37da2f93e86d](https://github.com/user-attachments/assets/4551cd50-acd6-480c-a4b1-37da2f93e86d)" width="100%" alt="Production"\>
 <br>
-\<img src="[https://github.com/user-attachments/assets/53a90b1e-b35f-495a-8d13-7c3dee79f9cb](https://github.com/user-attachments/assets/53a90b1e-b35f-495a-8d13-7c3dee79f9cb)" width="100%" alt="Trailer"\>
+<img src="[https://github.com/user-attachments/assets/53a90b1e-b35f-495a-8d13-7c3dee79f9cb](https://github.com/user-attachments/assets/53a90b1e-b35f-495a-8d13-7c3dee79f9cb)" width="100%" alt="Trailer"\>
 
   * **Gợi ý phim tương đương (Similar Movies):**
 
-\<img src="[https://github.com/user-attachments/assets/315e5369-5a0c-4a80-b8f7-90aa5e43e11b](https://github.com/user-attachments/assets/315e5369-5a0c-4a80-b8f7-90aa5e43e11b)" width="100%" alt="Similar Movies"\>
+<img src="[https://github.com/user-attachments/assets/315e5369-5a0c-4a80-b8f7-90aa5e43e11b](https://github.com/user-attachments/assets/315e5369-5a0c-4a80-b8f7-90aa5e43e11b)" width="100%" alt="Similar Movies"\>
 
 -----
 
@@ -139,9 +139,9 @@ Trang chi tiết cung cấp cái nhìn toàn diện về tác phẩm điện ả
 
   * **Bộ công cụ tìm kiếm & Kết quả:**
 
-\<img src="[https://github.com/user-attachments/assets/a1336de2-e036-4008-bd7d-a69cdf8dc6e7](https://github.com/user-attachments/assets/a1336de2-e036-4008-bd7d-a69cdf8dc6e7)" width="100%" alt="Search Tool"\>
+<img src="[https://github.com/user-attachments/assets/a1336de2-e036-4008-bd7d-a69cdf8dc6e7](https://github.com/user-attachments/assets/a1336de2-e036-4008-bd7d-a69cdf8dc6e7)" width="100%" alt="Search Tool"\>
 <br>
-\<img src="[https://github.com/user-attachments/assets/aa0e6ccc-22b1-453b-ae81-e6c9b4d5e8a3](https://github.com/user-attachments/assets/aa0e6ccc-22b1-453b-ae81-e6c9b4d5e8a3)" width="100%" alt="Search Results"\>
+<img src="[https://github.com/user-attachments/assets/aa0e6ccc-22b1-453b-ae81-e6c9b4d5e8a3](https://github.com/user-attachments/assets/aa0e6ccc-22b1-453b-ae81-e6c9b4d5e8a3)" width="100%" alt="Search Results"\>
 
 -----
 
