@@ -122,28 +122,33 @@ src/
 
 Hệ thống Banner động và danh sách phim được phân loại thông minh (Now Playing, Trending, Top Rated, Upcoming).
 
-\<p align="center"\>
-\<img src="[https://github.com/user-attachments/assets/573eb322-4a1d-442d-b1da-a599fb370cb0](https://github.com/user-attachments/assets/573eb322-4a1d-442d-b1da-a599fb370cb0)" width="45%" alt="Home Banner"\>
-\<img src="[https://github.com/user-attachments/assets/b9f06788-bee2-4f18-aadf-04d6d07b5914](https://github.com/user-attachments/assets/b9f06788-bee2-4f18-aadf-04d6d07b5914)" width="45%" alt="Now Playing"\>
-\</p\>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/573eb322-4a1d-442d-b1da-a599fb370cb0" width="45%" alt="Home Banner">
+  <img src="https://github.com/user-attachments/assets/b9f06788-bee2-4f18-aadf-04d6d07b5914" width="45%" alt="Now Playing">
+</p>
+
+---
 
 ### 🎥 2. Movie Detail (Deep Insights)
 
 Cung cấp cái nhìn toàn diện từ thông tin phim, dàn diễn viên (Cast), nhà sản xuất cho đến Trailer tích hợp.
 
-\<p align="center"\>
-\<img src="[https://github.com/user-attachments/assets/3c54b4c2-856d-4887-9755-c7ad7ca6ac0c](https://github.com/user-attachments/assets/3c54b4c2-856d-4887-9755-c7ad7ca6ac0c)" width="45%" alt="Movie Info"\>
-\<img src="[https://github.com/user-attachments/assets/29140788-72bd-4a23-a20d-34fc3c85a02c](https://github.com/user-attachments/assets/29140788-72bd-4a23-a20d-34fc3c85a02c)" width="45%" alt="Cast"\>
-\</p\>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3c54b4c2-856d-4887-9755-c7ad7ca6ac0c" width="45%" alt="Movie Info">
+  <img src="https://github.com/user-attachments/assets/29140788-72bd-4a23-a20d-34fc3c85a02c" width="45%" alt="Cast">
+</p>
+
+---
 
 ### 🔍 3. Intelligent Search
 
 Trải nghiệm tìm kiếm tức thì kết hợp với bộ lọc hiển thị trực quan.
 
-\<p align="center"\>
-\<img src="[https://github.com/user-attachments/assets/a1336de2-e036-4008-bd7d-a69cdf8dc6e7](https://github.com/user-attachments/assets/a1336de2-e036-4008-bd7d-a69cdf8dc6e7)" width="45%" alt="Search Tool"\>
-\<img src="[https://github.com/user-attachments/assets/aa0e6ccc-22b1-453b-ae81-e6c9b4d5e8a3](https://github.com/user-attachments/assets/aa0e6ccc-22b1-453b-ae81-e6c9b4d5e8a3)" width="45%" alt="Search Results"\>
-\</p\>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a1336de2-e036-4008-bd7d-a69cdf8dc6e7" width="45%" alt="Search Tool">
+  <img src="https://github.com/user-attachments/assets/aa0e6ccc-22b1-453b-ae81-e6c9b4d5e8a3" width="45%" alt="Search Results">
+</p>
+
 
 -----
 
